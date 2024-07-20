@@ -4,22 +4,20 @@ Intro
 Overview
 ------------
 
-JRI Viewer is a stand-alone PG-PHP application for viewing and exporting Jasper Reports on demand.
-
-It does not require JRI Publisher and can be used with any (and multiple) instances of `JasperReportsIntegration`_
+Jasper Publisher publishes, schedules, emails, and runs Jasper Reports on demand.
 
 .. _`JasperReportsIntegration`: https://github.com/daust/JasperReportsIntegration 
 
 It supports Users, Groups, and report-level permissions.
 
 
-.. image:: _static/JRIViewer-Main.png
+.. image:: _static/Jasper-Publisher-Main-min.png
 
 
 System Requirements
 -------------------
 * PostgreSQL
-* PHP >= 8.0
+* PHP >= 8.1
 
 Authors
 -------
@@ -34,7 +32,7 @@ Authors
 Open Source
 -----------
 
-JRI Publisher is Free, Open Source Software.
+Jasper Publisher is Free, Open Source Software.
 
 GNU GENERAL PUBLIC LICENSE v3
 

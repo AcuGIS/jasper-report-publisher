@@ -16,7 +16,7 @@ Dashboard Layout
 
 Once logged in as an administrator, the dashboard is show below.
 
-.. image:: _static/jasper-publisher-dashboard.png
+.. image:: ../../_static/jasper-publisher-dashboard.png
 
 Items can be accessed via the dashboard as well as left side menu
 

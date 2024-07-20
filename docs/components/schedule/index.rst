@@ -12,9 +12,13 @@ Click the Add Schedule button
 
 .. image:: ../../_static/schedule-1.png
 
-On the main Schedule page, click the Add tab to open the Create Schedule page as shown below.  
+The top section includes required fields:
 
 .. image:: ../../_static/schedule-2.png
+
+The bottom section includes option fields for email reports
+
+.. image:: ../../_static/schedule-3.png
 
 Scheduling Options
 ==================

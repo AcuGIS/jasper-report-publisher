@@ -18,7 +18,7 @@ The top section includes required fields:
 
 The bottom section includes option fields for email reports
 
-.. image:: ../../_static/schedule-3.png
+.. image:: ../../_static/schedule-4.png
 
 Scheduling Options
 ==================

@@ -6,13 +6,12 @@ Publish
 Publishing Reports
 ==================
 
-To publish a report, click the Publish tab as shown below:
+To publish a report, click Publish on the left menu:
 
-.. image:: _static/publish-tab.png
+Select the directory you wish to publish to and then select Upload to upload your .jrxml and .jasper files and any support files.
 
-This will open the screen below.  
 
-.. image:: _static/publish-default.png
+.. image:: ../../_static/publish-1.png
 
 .. note::
     The file browser location is set to /home/tomcat/apache-tomcat-v/jasper_reports/reports
@@ -24,34 +23,22 @@ You would also include any support files, such as image files.
 Creating Directories
 ====================
 
-To publish a report, click the Publish tab as shown below. 
+You can create directories via::
 
-.. image:: _static/publish-tab.png
-
-Enter the name of the directory you wish to create as show below.  This will create a new directory, NewReports, under the main reports directory.
-
-Once text is entered, upload any files you wish to.
-
-.. image:: _static/publish-browse.png
-
-Note that once a Directory has been created, it will be added to the availbale directories for subsequent publications:
-
-.. image:: _static/publish-new.png
+    /home/tomcat/tomcat-version/jasper-reports/reports
 
 Options
 =======
 
-There are four options for uploading files. 
+There are two options for uploading files. 
 
-1. Local File - this is a file already on the device.
+1. Upload the files individually
 
-2. Uploaded File - upload from your local machine.
+2. Uploaded Zipped File
 
-3. HTTP or FTP URL - obtain files via HTTP or FTP
+Additionally, you can select "Overwrite Existing Files"
 
-Additionally, select the options to upload zip archives as well as to over-write any existing files (for when you publish updates to your reports).
 
-.. image:: _static/publish-options.png
 
    
 

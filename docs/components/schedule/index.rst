@@ -6,13 +6,15 @@ Schedule
 Scheduling Reports
 ==================
 
-Reports can be scheduled with a variety of options via the Schedule tab as shown below:
+Click on Schedule on the left menu.
 
-.. image:: _static/schedule-tab.png
+Click the Add Schedule button
+
+.. image:: ../../_static/schedule-1.png
 
 On the main Schedule page, click the Add tab to open the Create Schedule page as shown below.  
 
-.. image:: _static/schedule-new.png
+.. image:: ../../_static/schedule-2.png
 
 Scheduling Options
 ==================

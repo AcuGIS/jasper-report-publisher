@@ -3,6 +3,6 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "QuartzMap"
+name = "Jaspe Publisher"
 authors = [{name = "AcuGIS", email = "hello@citedcorp.com"}]
 dynamic = ["version", "description"]

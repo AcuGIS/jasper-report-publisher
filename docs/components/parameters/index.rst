@@ -31,10 +31,11 @@ Enter the following information:
 
 * Paramater Type	- Enter 'dropdown'
 * Paramater Name - The name of Paramater
-* Paramater Values - Enter a comma separated list of values (in our example, the values are Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica)
+* Paramater Values - Enter a comma separated list of values (in our example, Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica)
 * Report Name - Select the report Parameter will be applied to.
 
-Once you save the paramter, it will now appear on the Report Dashboard
+
+Once you save the paramter, it will now appear on the Report Dashboard as below:
 
 .. image:: ../../_static/report-parameter-lov.png
 .

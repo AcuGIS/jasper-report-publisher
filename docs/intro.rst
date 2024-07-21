@@ -6,9 +6,11 @@ Overview
 
 Jasper Publisher publishes, schedules, emails, and runs Jasper Reports on demand.
 
-.. _`JasperReportsIntegration`: https://github.com/daust/JasperReportsIntegration 
-
 It supports Users, Groups, and report-level permissions.
+
+Jasper Report Publisher is free, Open Source software.  It uses `JasperReportsIntegration` as the engine for processing reports.
+
+.. _`JasperReportsIntegration`: https://github.com/daust/JasperReportsIntegration 
 
 
 .. image:: _static/Jasper-Publisher-Main-min.png

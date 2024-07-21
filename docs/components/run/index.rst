@@ -1,96 +1,39 @@
 **********************
-Run
+Run Reports
 **********************
 
 .. contents:: Table of Contents
 Overview
 ==================
 
-Click the Reports tab to open the Reports Dashboard.
+Admins can run Scheduled Reports manually at any time via the Reporting menu.
 
-.. image:: _static/reports-tab.png
+This menu also links to Scheduled Report outputs.
 
-This will open the screen below.  
+To run a Scheduled Report manually, click Reporting on the left menu
 
-.. image:: _static/report-dashboard.png
+Click the Run icon to the right of the report.
 
-As we can see above, the creation of our NewReports Directory has been added to the directory structure.  This is true for all directories and sub directories added.
-
-Dashboard Layout
-================
-
-Expanding the NewReports directory, we see below:
-
-.. image:: _static/report-dashboard-item.png
-
-
-Dashboard Functions
-===================
-
-**Name**::
-
- Clicking on the report name will open the .jrxml file for editing, as shown below:
- 
-.. image:: _static/reports-edit-jrxml.png
- 
- 
-**Actions**::
-      
-Run:  Runs the report on demand.
-
-.. image:: _static/reports-actions.gif
-
-
-Clean: Opens a new window to delete any reports you may wish to delete
-
-.. image:: _static/reports-cleaner.png 	
-
-Download:  Opens a new window to download selected report(s) in .zip or .bgz format.
-
-.. image:: _static/reports-downloader.png 	
-
-
-**SchID**::
-
-Link to edit the Schedule for the report
-
-**Cron**::
-
-Displays the cron in use for the Schedule
- 
-**Format**::
-
-Displays the report format (e.g. pdf, csv, etc...)
-
-**Data Source**::
-
-Displays report Data Source
-
-**Output**::
-
-Clicking the Browse button will open the report directory in the File Manager as shown below:
-
-.. image:: _static/reports-browse.png
-
-
-**Email**::
-
-Displays report email recipient(s).
-
-**Optional Params**::
-
-Displays any URL Parameters the report is using.
-
-
-No Schedule
-===========
+.. image:: ../../_static/run-scheduled-report.png
 
 .. note::
-    Any report that does not have a schedule will show the Scheduler icon in the Actions menu.  To add a Schedule, click the icon as shown below.
+    Running a Scheduled Report that is emailed with result in the email being as well.
 
- 
-.. image:: _static/reports-no-schedule.png
 
-   
+View Output
+================
+
+To view the output, click on the Files column.
+
+.. image:: ../../_static/run-scheduled-report-2.png
+
+If more than 3 reports are present, a "More" option will appear.
+
+Clicking the "More" option will take you to the file output location to access all reports
+
+.. image:: ../../_static/run-scheduled-report-3.png
+
+
+
 
 

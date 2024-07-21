@@ -1,4 +1,4 @@
-JRI Viewer
+Jasper Report Publisher
 ==================================================
 
 .. image:: _static/Jasper-Publisher-Main-min.png

@@ -25,19 +25,19 @@ Dropdown/LOV Parameter
 
 To add an LOV parameter, click the "Add New" button at top.
 
-.. image:: ../../_static/parameter-2-1.png
-
 Enter the following information:
 
 * Paramater Type	- Enter 'dropdown'
 * Paramater Name - The name of Paramater
 * Paramater Values - Enter a comma separated list of values (in our example, Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica)
-* Report Name - Select the report Parameter will be applied to.
+* Report Name - Select the report Parameter will be applied to.  
+
+.. image:: ../../_static/parameter-2-1.png
 
 
 Once you save the paramter, it will now appear on the Report Dashboard as below:
 
-.. image:: ../../_static/report-parameter-lov.png
+.. image:: ../../_static/report-parameter-lov-display.png
 .
 On click, the dropdown/LOV will display as below:
 

@@ -23,22 +23,18 @@ To add a new Group, click the "Add New" button at top.
 Enter the following information:
 
 * Name	- Group Name
-* Users	- Users in Group
+* Users	- Select Users for Group (Multiselect)
 
-Add Members to Group
+.. image:: ../../_static/add-group-1.png
+
+Click the Add button
+
+Add and Edit Members
 =====================
 
-To add members to a Group, click the Edit button and add members as below
+You can add and edit members of a Group by clicking the Edit icon
 
-.. image:: Groups-1.png
-
-Edit Group
-===================
-
-To edit a group, click the Edit icon, as shown below:
-
-.. image:: Groups-1.png
-
+.. image:: ../../_static/add-group-1.png
 
 Delete Group
 ===================

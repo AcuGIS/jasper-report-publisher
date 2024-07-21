@@ -44,7 +44,7 @@ Navigate to https://yourdomain.com/admin/setup.php:
 
 Enter the information for the PostgreSQL database you created:
 
-.. image:: _static/install-2.png
+.. image:: _static/installer-credentials.png
 
 The installer will create the required objects in PostgreSQL
 

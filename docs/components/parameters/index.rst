@@ -25,18 +25,19 @@ Dropdown/LOV Parameter
 
 To add an LOV parameter, click the "Add New" button at top.
 
-.. image:: Parameter-1.png
+.. image:: ../../_static/parameter-2-1.png
 
 Enter the following information:
 
 * Paramater Type	- Enter 'dropdown'
-* Paramater Name - Display name of Paramater
+* Paramater Name - The name of Paramater
 * Paramater Values - For LOV type, enter a comma separated list of values
 * Report Name - Select the report Parameter will be applied to.
 
-In the example below, the Values are North America, South America, and Europe.
+In the example below, the Values are  Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica
+.
 
-.. image:: JRI-Viewer-Param.png
+.. image:: ../../_static/lov-parameter.png
 
 
 

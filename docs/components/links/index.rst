@@ -21,17 +21,18 @@ Add Link
 
 To add a new Link, click the "Add New" button at top.
 
-Select the report from the drop down menu as show below:
+Give your link a Name, Description, and URL:
 
-.. image:: ../../_static/link-1.png
+.. image:: ../../_static/links-1.png
 
-Enter the Context to appear next to the generated report.  
 
-Edit Context
-======================
-To edit a Context, click the edit link as shown below
+The link will appear on the user dashboard as below:
 
 .. image:: ../../_static/links-2.png
+
+.. note::
+    By default, links open in a new window.
+
 
 
 

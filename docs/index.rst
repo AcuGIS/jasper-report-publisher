@@ -25,6 +25,7 @@ Jasper Report Publisher
     components/schedule/index
     components/run/index
     components/reports/index
+    components/email/index
     components/reportgroups/index
     components/parameters/index
     components/context/index

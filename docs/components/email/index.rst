@@ -34,47 +34,32 @@ The contents should be as below::
 Email HTML Templates
 =====================
 
+The directory for storing HTML templates for email is::
 
-.. image:: Parameter-1.png
+     /home/tomcat/apache-tomcat-version/jasper_reports/email_tmpl 
 
-Enter the following information:
+This directory contains a started template you can customize (email_template.html).
 
-* Paramater Type	- Enter 'dropdown'
-* Paramater Name - Display name of Paramater
-* Paramater Values - For LOV type, enter a comma separated list of values
-* Report Name - Select the report Parameter will be applied to.
+You can also add your own templates to this directory as well.
 
-In the example below, the Values are North America, South America, and Europe.
+Any templates in this directory will appear in the dropdown box on the Report Schedule page;
 
-.. image:: JRI-Viewer-Param.png
+.. image:: ../../_static/schedule-4.png
 
+Using the included email_template.html, the Report email will look like below:
 
+.. image:: ../../_static/email-templates.png
 
-Query Parameter
+PostFix
 =====================
 
-To add a Query parameter, click the "Add New" button at top.
+By default, Jasper Report Publisher installs PostFix as MTA
 
-.. image:: Parameter-1.png
+This can be subsituted with Sendmail or any other MTA you wish to use.
 
-Enter the following information:
-
-* Paramater Type	- Enter 'query'
-* Paramater Name - Display name of Paramater
-* Paramater Values - Comma separated list of Parameters to be used
-* Report Name - Select the report Parameter will be applied to.
-
-In the example below, the Values we entered are the Jasper parameters Cost_Greater_Than and Cost_Less_Than.
-
-.. image:: Parameter-2.png
-
-Edit Parameter
+MUTT
 ===================
-To edit a Parameter entry, click the Edit icon
-
-Delete Parameter
-===================
-To delete a Parameter entry, click the Delete icon
+Jasper Publisher uses MUTT email client.
 
 
 

@@ -31,11 +31,14 @@ Enter the following information:
 
 * Paramater Type	- Enter 'dropdown'
 * Paramater Name - The name of Paramater
-* Paramater Values - For LOV type, enter a comma separated list of values
+* Paramater Values - Enter a comma separated list of values (in our example, the values are Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica)
 * Report Name - Select the report Parameter will be applied to.
 
-In the example below, the Values are  Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica
+Once you save the paramter, it will now appear on the Report Dashboard
+
+.. image:: ../../_static/report-parameter-lov.png
 .
+On click, the dropdown/LOV will display as below:
 
 .. image:: ../../_static/lov-parameter.png
 

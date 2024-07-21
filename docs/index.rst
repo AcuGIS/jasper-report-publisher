@@ -28,6 +28,7 @@ JRI Viewer
     components/reportgroups/index
     components/parameters/index
     components/context/index
+    components/links/index
     components/thumbnail/index
     
 .. toctree::

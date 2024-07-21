@@ -13,36 +13,39 @@ Users
 Overview
 ==================
 
-Report permissions are granted to User Groups.
+Jasper Publisher report permissions are granted to User Groups.
 
-Add New Group
+You can begin by creatting Users and then Groups, or vice versa.
+
+Add New User
 ================
 
-To add a new Group, click the "Add New" button at top.
+To create a new user, click on Users on the left menu.
 
-Enter the following information:
+Click the Add User button
 
-* Name	- Group Name
-* Users	- Users in Group
+.. image:: ../../_static/add-user.png
 
-Add Members to Group
-=====================
+Enter the required information and be sure to set the Access Level (Admin or User)
 
-To add members to a Group, click the Edit button and add members as below
+.. image:: ../../_static/add-user-2.png
 
-.. image:: Groups-1.png
+If the Group(s) you wish to add To add the user to are already created, you can add them as below:
 
-Edit Group
+.. image:: ../../_static/add-user-2-alt.png
+
+
+Edit Group Membership
 ===================
 
-To edit a group, click the Edit icon, as shown below:
+You can always edit Group Membership later as well via both Users and User Groups menu.
 
-.. image:: Groups-1.png
+.. image:: ../../_static/add-user-3.png
 
 
-Delete Group
+Delete User
 ===================
-To delete a report entry, click the Delete icon.
+To delete a user, click the Delete icon to the right of the Users name.
 
 
 

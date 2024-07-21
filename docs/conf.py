@@ -49,7 +49,7 @@ html_css_files = [
 pygments_style = "sphinx"
 
 
-html_logo = "jasper-report-publisher.png"
+html_logo = "jasper-report-publisher-logo.png"
 html_theme_options = {
     'logo_only': True,
     'display_version': False,

@@ -14,23 +14,20 @@ Reports
 Overview
 ==================
 
-You can view, add, and edit reports via the Reports menu.
-
-.. image:: _static/Add-Report.png
-
-
+The Reports section on the left menu is where you add Reports to the end user Dashboard.
 
 Add New Report
 ================
 
 To add a new report, click the "Add New" button at top.
 
+.. image:: ../../_static/report-dashboard-0.png
+
 Enter the following information:
 
-* url	- Full url to your JRI installation
 * Report	- Name of the jrxml file
 * Data Souce - The JRI Data Source name
-* Download Only - Download Only option
+* Format - Report Format (Defaults to HTML)
 * File Name	- jrxml name of the report
 * Name	- the name that will appear in the dashboard
 * Description	- the description that will appear in the dashboard
@@ -38,10 +35,15 @@ Enter the following information:
 * Grouped Report - Report is part of Grouped Report   
 
 
-Download Only Option
+With all fields populated, click the Add icon at right:
+
+.. image:: ../../_static/report-dashboard-1.png
+
+
+Report Thumbnail
 =====================
-1.  The report contains charts which do not render in HTML
-2.  You want the chart to be downloaded immediately.
+
+You can set the thumbnail for a report by adding reportid.png to the assets/maps folder.
 
 Edit Report
 ===================

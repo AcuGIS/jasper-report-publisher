@@ -14,11 +14,12 @@ Click the Add Schedule button
 
 The top section includes required fields:
 
-.. image:: ../../_static/schedule-2.png
+.. image:: ../../_static/schedule-options-0.png   
 
-The bottom section includes option fields for email reports
 
-.. image:: ../../_static/schedule-4.png
+The bottom section includes optional fields for email reports
+
+.. image:: ../../_static/schedule-options-1.png
 
 
 Scheduling Options
@@ -137,23 +138,6 @@ To add Report Parameters to the report URL, enter the parameter(s) as shown belo
 
 You can add as many parameters as you wish to.
 
-
-Email HTML Templates
-===================
-
-Below are some additional examples.
-
-**Send report every Tuesday at 1500 (3 PM)**
-
-.. image:: _static/schedule-tuesdays.png
-
-**Send report every hour without email delivery**
-
-.. image:: _static/schedule-hour.png
-
-**Send report weekly with StudentID = 51**
-
-.. image:: _static/schedule-weekly.png
 
    
 

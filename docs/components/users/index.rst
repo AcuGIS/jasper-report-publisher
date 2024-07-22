@@ -13,9 +13,17 @@ Users
 Overview
 ==================
 
-Jasper Publisher report permissions are granted to User Groups.
+Jasper Report Publisher grants permissions on Reports to User Groups.
 
 You can begin by creatting Users and then Groups, or vice versa.
+
+User Types
+==================
+
+Jasper Report Publisher supports the following User types:
+
+1. Admins.  Can create Data Sources, Publish Reports, and create Schedules.
+2. Users.   Can consume reports via Dashboard
 
 Add New User
 ================

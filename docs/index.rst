@@ -23,10 +23,10 @@ Jasper Report Publisher
     components/usergroups/index
     components/publish/index
     components/schedule/index
-    components/run/index
     components/reports/index
     components/parameters/index
-    components/email/index
+    components/run/index
+    components/email/index      
     components/reportgroups/index
     components/context/index
     components/links/index

@@ -2,11 +2,15 @@
 Installation
 ************
 
-Installation is done via setup.php located in the /admin directory
+Installation is done via the install scripts located in the /installer directory.
 
-PHP and PostgreSQL are required.
-
-Create a PostgreSQL database and run the installer.
+System Requirements
+=======================
+* PostgreSQL 16
+* PHP >= 8.1
+* 2 GB RAM
+* 5 GB Disk
+* Tested on Ubuntu 22
 
 Running the Installer
 =======================

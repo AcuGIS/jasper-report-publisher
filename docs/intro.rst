@@ -18,11 +18,6 @@ Jasper Report Publisher uses `JasperReportsIntegration`_ as the engine for proce
 .. image:: _static/Jasper-Publisher-Main-min.png
 
 
-System Requirements
--------------------
-* PostgreSQL
-* PHP >= 8.1
-
 Authors
 -------
 * `David Ghedini`_

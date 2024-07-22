@@ -1,5 +1,5 @@
 **********************
-Run Reports
+Manual Run
 **********************
 
 .. contents:: Table of Contents

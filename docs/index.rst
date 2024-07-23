@@ -12,6 +12,7 @@ Jasper Report Publisher
 
    intro
    installing
+   components/sample/index
    
    
 .. toctree::

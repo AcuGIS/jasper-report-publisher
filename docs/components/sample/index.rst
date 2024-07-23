@@ -71,10 +71,12 @@ Note: These Schedules, do not have email activated.  You can edit them to includ
 
 
 
-Report Thumbnail
+Sample Parameters
 =====================
 
-You can set the thumbnail for a report by adding reportid.png to the assets/maps folder.
+Sample Parameters are include for the LOV Parameter and Query Parameter reports
+
+.. image:: ../../_static/sample-parameter.png
 
 Edit Report
 ===================

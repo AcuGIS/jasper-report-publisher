@@ -30,6 +30,16 @@ The sample database, beedatabase, is taken from the QFieldCloud Simple Bee Proje
    public | spatial_ref_sys | table | jrv
   (3 rows)
 
+
+Sample Data Source
+================
+
+The included sample Data Source is a JNDI connection to the beedatabase:
+
+.. image:: ../../_static/sample-data-source.png
+
+
+
 Sample Reports
 ================
 
@@ -49,16 +59,16 @@ Three Sample Reports are created
 
 .. image:: ../../_static/query-report-3.png
 
-* File Name	- jrxml name of the report
-* Name	- the name that will appear in the dashboard
-* Description	- the description that will appear in the dashboard
-* Access Groups - Group(s) that have access to this report
-* Grouped Report - Report is part of Grouped Report   
 
+Sample Schedules
+================
 
-With all fields populated, click the Add icon at right:
+A sample Schedule is created for each report.
 
-.. image:: ../../_static/report-dashboard-1.png
+Note: These Schedules, do not have email activated.  You can edit them to include email delivery to test email functionality.
+
+.. image:: ../../_staticsample-schedule.png
+
 
 
 Report Thumbnail

@@ -67,7 +67,7 @@ A sample Schedule is created for each report.
 
 Note: These Schedules, do not have email activated.  You can edit them to include email delivery to test email functionality.
 
-.. image:: ../../_staticsample-schedule.png
+.. image:: ../../_static/sample-schedule.png
 
 
 

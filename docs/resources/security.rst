@@ -12,6 +12,46 @@ Security
 
 Like JasperReportsIntegration, JRI Viewer is designed to be used behind a firewall.
 
-As the url is not visible, it can be used outside with appropriate precautions.
+You should enable your firewall as well.
 
-   
+
+Disable Info Page
+=========================
+
+The JRI Info page should be disabled
+
+Line 31 of application.properties should be changed from::
+
+   infoPageIsEnabled=true
+
+to::
+
+   infoPageIsEnabled=false
+
+Demo Directory
+=========================
+
+Remove the /demo directory::
+
+   rm -rf /home/tomcat/tomcat-VERSION/jasper_reports/reports/demo
+
+Encrypt Passwords
+=========================
+
+Encrypt Password in application.properties file::
+
+   sub encrypt_prop_passwords(){
+   my $web_inf = get_catalina_home().'/webapps/JasperReportsIntegration/WEB-INF';
+   my $cmd = "cd $web_inf/classes; java -cp '.:../lib/*' main/CommandLine encryptPasswords ".get_jasper_home()."/conf/application.properties";
+   exec_cmd($cmd);
+
+Set Allowed IPs
+=========================
+
+Set the allowed IPs::
+
+   # ipAddressesAllowed=127.0.0.1,10.10.10.10,192.168.178.31
+   # if the list is empty, ALL addresses are allowed
+
+
+  

@@ -14,42 +14,62 @@ Structure
 Overview
 ==================
 
-If you select the "Load Sample Data" box, it will create a sample database and reports.
+The primary directory for Jasper Report Publisher is located at:
 
-If you load the Sample Data, you will need to restart Tomcat in order to pick up sample data.
+/home/tomcat/tomcat-VERIONS/jasper_reports and looks as below (this includes Demo Data)::
 
-.. image:: ../../_static/tomcat-restart.png
+   ├── conf
+   │   ├── application.properties
+   │   ├── application.properties.save
+   │   └── log4j2.xml
+   ├── email_tmpl
+   │   └── email_template.html
+   ├── jri_schedule.crontab
+   ├── logs
+   │   └── JasperReportsIntegration.log
+   ├── reports
+   │   ├── Cherry.jrxml
+   │   ├── SimpleBees.jasper
+   │   ├── SimpleBees.jrxml
+   │   ├── cherry.jpg
+   │   ├── demo
+   │   │   ├── charts.jrxml
+   │   │   ├── encrypt-pdf.jrxml
+   │   │   ├── flower1.png
+   │   │   ├── issue-with-query.jrxml
+   │   │   ├── leaf_banner_red.png
+   │   │   ├── long-running-report.jrxml
+   │   │   ├── master_detail.jrxml
+   │   │   ├── master_detail_subreport1.jrxml
+   │   │   ├── opal_logo_50px_hoch.jpg
+   │   │   ├── opal_logo_50px_hoch_2.jpg
+   │   │   ├── order.jrxml
+   │   │   ├── orders-test.jrxml
+   │   │   ├── orders.jrxml
+   │   │   ├── qr.jrxml
+   │   │   ├── test_images.jrxml
+   │   │   └── top_orders.jrxml
+   │   ├── lov-parameter.jasper
+   │   ├── lov-parameter.jrxml
+   │   ├── query-parameter.jasper
+   │   ├── query-parameter.jrxml
+   │   └── test.jrxml
+   └── schedules
+    ├── 1_env.sh
+    ├── 2_env.sh
+    └── 3_env.sh
 
 
-Dashboard
+
+
+conf
 ================
 
-The sample reports are available on the Dashboard
+The conf file is used directly from JasperReportsIntegration.
 
-.. image:: ../../_static/sample-dashboard.png
-  
-Sample Database
-================
+This stores general configuration information as well as Data Source information.
 
-The sample database, beedatabase, is taken from the QFieldCloud Simple Bee Project::
-
-  beedatabase=# \dt
-               List of relations
-   Schema |      Name       | Type  | Owner
-  --------+-----------------+-------+--------
-   public | apiary          | table | admin1
-   public | fields          | table | admin1
-   public | spatial_ref_sys | table | jrv
-  (3 rows)
-
-
-Sample Data Source
-================
-
-The included sample Data Source is a JNDI connection to the beedatabase:
-
-.. image:: ../../_static/sample-data-source.png
-
+The file can be edited manually, but a backup should be taken prior to doing so.
 
 
 Sample Reports

@@ -14,9 +14,27 @@ Structure
 Overview
 ==================
 
-The primary directory for Jasper Report Publisher is located at:
+Jasper Report Publisher uses two primary directories::
 
-/usr/local/bin/::
+   /usr/local/bin/
+   /home/tomcat/tomcat-VERIONS/jasper_reports
+
+Below is the structure and function of each.
+
+bin
+==================
+
+The /usr/local/bin/ contains three executable files::
+
+   gen_jri_report.sh
+   svc_ctl.sh
+   chown_ctl.sh
+
+The gen_jri_report.sh file is responsible for executing reports.
+
+It uses inputs from the configuration, schedule, and environment files.
+
+If you change the default webapp name or port, you would update it here::
 
 
    #!/bin/bash -e
@@ -58,8 +76,14 @@ The primary directory for Jasper Report Publisher is located at:
 
    exit 0
 
+The svc_ctl.sh file is used for starting and stopping Tomcat via the application.  You can also stop/start Tomcat via the command line.
 
-/home/tomcat/tomcat-VERIONS/jasper_reports and looks as below (this includes Demo Data)::
+The chown_ctl.sh updates permission for uploaded reports to user tomcat.
+
+jasper_reports
+====================
+
+The /home/tomcat/tomcat-VERIONS/jasper_reports directories looks as below on installation (this includes Demo Data)::
 
    ├── conf
    │   ├── application.properties
@@ -164,46 +188,6 @@ An example file is below::
 The schedule files are created and updated automatically via Schedules.
 
 While they can be edited by hand, you should create a backup before doing so.
-
-
-
-
-
-.. image:: ../../_static/lov-report-0.png
-
-
-* Query Parameter - This is a basic report using two Query Parameters
-
-.. image:: ../../_static/query-report-3.png
-
-
-Sample Schedules
-================
-
-A sample Schedule is created for each report.
-
-Note: These Schedules, do not have email activated.  You can edit them to include email delivery to test email functionality.
-
-.. image:: ../../_static/sample-schedule.png
-
-
-
-Sample Parameters
-=====================
-
-Sample Parameters are include for the LOV Parameter and Query Parameter reports
-
-.. image:: ../../_static/sample-parameter.png
-
-Delete Sample Data
-===================
-
-To delete the sample data:
-
-1. Delete Sample Schedules
-2. Delete Sample Reports
-3. Delete Sample Data Sources
-4. Drop beedatabase
 
 
 

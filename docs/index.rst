@@ -33,6 +33,7 @@ Jasper Report Publisher
     components/context/index
     components/links/index
     components/thumbnail/index
+    components/structure/index
     
 .. toctree::
     :maxdepth: 3

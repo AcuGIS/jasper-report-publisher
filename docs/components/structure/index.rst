@@ -65,21 +65,41 @@ The primary directory for Jasper Report Publisher is located at:
 conf
 ================
 
-The conf file is used directly from JasperReportsIntegration.
+The conf directory contains the application.properties file and is used directly from JasperReportsIntegration.
 
 This stores general configuration information as well as Data Source information.
 
 The file can be edited manually, but a backup should be taken prior to doing so.
 
 
-Sample Reports
+email_tmpl
 ================
 
-Three Sample Reports are created
+The email_tmpl directory is used to store email HTML templates.
 
-* Simple Bee Report	- this is a basic chart report
+On installation, a started template, email_template.html, is included.
 
-.. image:: ../../_static/simple-bee-report.png
+You can add additional templates in this location.
+
+
+jri_schedule.crontab
+================
+
+This file should not be modified
+
+logs
+================
+
+Contains log files for JasperReportsIntegration.
+
+reports
+================
+
+The reports directory is where reports are stored.
+
+You can create sub directories in this location as well.
+
+When selecting reports via Schedule, the reports and directories are listed in the dropdown.
 
 
 * LOV Parameter - This is a basic report using a single LOV (List of Values) Parameter

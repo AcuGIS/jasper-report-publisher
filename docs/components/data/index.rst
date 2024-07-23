@@ -28,17 +28,25 @@ Add Data Source
 
 To add a new Link, click the "Add New" button at top.
 
-Give your link a Name, Description, and URL:
+.. image:: ../../_static/data-source-1.png
 
-.. image:: ../../_static/links-1.png
+Select Type (JNDI or JDBC)
+
+Data Source Name (this should match name used in Jasper Report Adapter)
+
+URL: The JDBC URL (e.g. jdbc:postgresql://localhost:5432/beedatabase)
+
+Username
+
+Password
 
 
-The link will appear on the user dashboard as below:
+You can add as many Data Sources as you wish to:
 
-.. image:: ../../_static/links-2.png
+.. image:: ../../_static/data-source-2.png
 
-.. note::
-    By default, links open in a new window.
+.. danger::
+    When you add a Data Source, you must restart Tomcat in order to register the Data Source.
 
 
 

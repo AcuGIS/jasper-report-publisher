@@ -40,13 +40,19 @@ Username
 
 Password
 
-
 You can add as many Data Sources as you wish to:
 
 .. image:: ../../_static/data-source-2.png
 
-.. danger::
-    When you add a Data Source, you must restart Tomcat in order to register the Data Source.
+Restart Tomcat
+================
+
+You must restart Tomcat after adding or editing Data Sources in order to pick up the new configuration
+
+.. image:: ../../_static/tomcat-restart.png
+
+
+
 
 
 

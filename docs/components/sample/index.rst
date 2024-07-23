@@ -15,6 +15,18 @@ Overview
 ==================
 
 If you select the "Load Sample Data" box, it will create a sample database and reports.
+
+If you load the Sample Data, you will need to restart Tomcat in order to pick up sample data.
+
+.. image:: ../../_static/tomcat-restart.png
+
+
+Dashboard
+================
+
+The sample reports are available on the Dashboard
+
+.. image:: ../../_static/sample-dashboard.png
   
 Sample Database
 ================
@@ -78,15 +90,15 @@ Sample Parameters are include for the LOV Parameter and Query Parameter reports
 
 .. image:: ../../_static/sample-parameter.png
 
-Edit Report
+Delete Sample Data
 ===================
-To edit a report entry, click the Edit icon, as shown below:
 
-.. image:: _static/Edit-Report.png
+To delete the sample data:
 
-Delete Report
-===================
-To delete a report entry, click the Delete icon, as shown below:
+1. Delete Sample Schedules
+2. Delete Sample Reports
+3. Delete Sample Data Sources
+4. Drop beedatabase
 
-.. image:: _static/Edit-Report.png
+
 

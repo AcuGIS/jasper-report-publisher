@@ -60,8 +60,6 @@ The primary directory for Jasper Report Publisher is located at:
     └── 3_env.sh
 
 
-
-
 conf
 ================
 
@@ -102,7 +100,31 @@ You can create sub directories in this location as well.
 When selecting reports via Schedule, the reports and directories are listed in the dropdown.
 
 
-* LOV Parameter - This is a basic report using a single LOV (List of Values) Parameter
+schedules
+================
+
+The schedules directory contains configuration for reports Schedules.
+
+An example file is below::
+
+   schid=3
+   REP_ID=SimpleBees
+   REP_FORMAT=pdf
+   REP_DATASOURCE=beedatabase
+   REP_FILE=SimpleBees.pdf
+   OPT_PARAMS=
+   RECP_EMAIL=
+   EMAIL_SUBJ=
+   EMAIL_BODY=
+   EMAIL_TEMPLATE=
+
+The schedule files are created and updated automatically via Schedules.
+
+While they can be edited by hand, you should create a backup before doing so.
+
+
+
+
 
 .. image:: ../../_static/lov-report-0.png
 

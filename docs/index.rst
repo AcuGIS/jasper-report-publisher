@@ -21,6 +21,7 @@ Jasper Report Publisher
     components/dashboard/index
     components/users/index
     components/usergroups/index
+    components/data/index
     components/publish/index
     components/schedule/index
     components/reports/index

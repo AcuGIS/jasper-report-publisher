@@ -15,10 +15,9 @@ System Requirements
 Running the Installer
 =======================
 
-Clone or download the repoistory
+Clone or download the repoistory:
 
 .. code-block:: console
-   :linenos:
 
     git clone https://github.com/AcuGIS/Jasper-Publisher
     mv Jasper-Publisher-master Jasper-Publisher
@@ -26,7 +25,7 @@ Clone or download the repoistory
 Navigate to /JasperPublisher and run the installers:
 
 .. code-block:: console
-   :linenos:
+ 
 
    ./installer/postgres.sh
    ./installer/app-install.sh
@@ -36,7 +35,6 @@ Navigate to /JasperPublisher and run the installers:
 Optionally, run below to provision SSL using letsencrypt:
 
 .. code-block:: console
-   :linenos:
 
    apt-get -y install python3-certbot-apache
 

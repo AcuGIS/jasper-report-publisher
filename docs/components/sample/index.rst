@@ -41,10 +41,13 @@ Three Sample Reports are created
 
 
 * LOV Parameter - This is a basic report using a single LOV (List of Values) Parameter
+
+.. image:: ../../_static/lov-report-0.png
+
+
 * Query Parameter - This is a basic report using two Query Parameters
 
-
-
+.. image:: ../../_static/query-report-3.png
 
 * File Name	- jrxml name of the report
 * Name	- the name that will appear in the dashboard

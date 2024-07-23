@@ -6,11 +6,9 @@ Overview
 
 Jasper Publisher publishes, schedules, emails, and runs Jasper Reports on demand.
 
-It supports Users, Groups, and report-level permissions.
+It supports PotgreSQL, Oracle, MySQL, and MSSQL and you can add additional data sources.
 
-Jasper Report Publisher is free, Open Source software.  
-
-Jasper Report Publisher uses `JasperReportsIntegration`_ as the engine for processing reports.
+Jasper Report Publisher is free, Open Source software that uses `JasperReportsIntegration`_ as the engine for processing reports.
 
 .. _`JasperReportsIntegration`: https://github.com/daust/JasperReportsIntegration 
 

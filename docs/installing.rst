@@ -51,7 +51,7 @@ Enter the information for the PostgreSQL database you created:
 
 The installer will create the required objects in PostgreSQL
 
-When the installer completes, you can log in using the default admin@admin.com/1234
+When the installer completes, you can log in using the email and password you selected above.
 
 .. image:: _static/install-3.png
 

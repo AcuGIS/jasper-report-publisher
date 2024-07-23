@@ -31,6 +31,7 @@ Navigate to /JasperPublisher and run the installers:
    ./installer/postgres.sh
    ./installer/app-install.sh
    ./installer/jri-install.sh
+   ./installer/jri-sample.sh
 
 Optionally, run below to provision SSL using letsencrypt:
 
@@ -48,7 +49,7 @@ Navigate to https://yourdomain.com/admin/setup.php:
 
 Enter the information for the PostgreSQL database you created:
 
-.. image:: _static/installer-credentials.png
+.. image:: _static/install-screen-2.png
 
 The installer will create the required objects in PostgreSQL
 

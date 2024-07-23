@@ -20,11 +20,22 @@ Authors
 -------
 * `David Ghedini`_
 * `Kaloyan Petrov`_
+* `AcuGIS`_
 
 .. _`David Ghedini`: https://github.com/DavidGhedini
 .. _`Kaloyan Petrov`: https://github.com/kaloyan13
+.. _`AcuGIS`: https://www.acugis.com
 
+Components
+-------------
 
+* `JasperReportsIntegration`_
+.. _`JasperReportsIntegration`: https://github.com/daust/JasperReportsIntegration 
+* Apache Tomcat
+* PostgreSQL
+* PHP
+* Postfix
+* MUTT
 
 Open Source
 -----------

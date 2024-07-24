@@ -25,18 +25,23 @@ Dropdown/LOV Parameter
 
 To add an LOV parameter, click the "Add New" button at top.
 
-.. image:: Parameter-1.png
-
 Enter the following information:
 
 * Paramater Type	- Enter 'dropdown'
-* Paramater Name - Display name of Paramater
-* Paramater Values - For LOV type, enter a comma separated list of values
-* Report Name - Select the report Parameter will be applied to.
+* Paramater Name - The name of Paramater
+* Paramater Values - Enter a comma separated list of values (in our example, Apis Mellifera Mellifera, Apis Mellifera, and Apis Mellifera Carnica)
+* Report Name - Select the report Parameter will be applied to.  
 
-In the example below, the Values are North America, South America, and Europe.
+.. image:: ../../_static/parameter-2-1.png
 
-.. image:: JRI-Viewer-Param.png
+
+Once you save the paramter, it will now appear on the Report Dashboard as below:
+
+.. image:: ../../_static/report-parameter-lov-display.png
+.
+On click, the dropdown/LOV will display as below:
+
+.. image:: ../../_static/lov-parameter.png
 
 
 
@@ -45,7 +50,7 @@ Query Parameter
 
 To add a Query parameter, click the "Add New" button at top.
 
-.. image:: Parameter-1.png
+.. image:: ../../_static/parameter-3-1.png
 
 Enter the following information:
 
@@ -56,7 +61,7 @@ Enter the following information:
 
 In the example below, the Values we entered are the Jasper parameters Cost_Greater_Than and Cost_Less_Than.
 
-.. image:: Parameter-2.png
+.. image:: ../../_static/parameter-report-5-1.png
 
 Edit Parameter
 ===================

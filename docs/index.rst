@@ -1,4 +1,4 @@
-JRI Viewer
+Jasper Report Publisher
 ==================================================
 
 .. image:: _static/Jasper-Publisher-Main-min.png
@@ -12,6 +12,7 @@ JRI Viewer
 
    intro
    installing
+   components/sample/index
    
    
 .. toctree::
@@ -21,15 +22,19 @@ JRI Viewer
     components/dashboard/index
     components/users/index
     components/usergroups/index
+    components/data/index
     components/publish/index
     components/schedule/index
-    components/run/index
     components/reports/index
-    components/reportgroups/index
     components/parameters/index
+    components/run/index
+    components/email/index      
+    components/reportgroups/index
     components/context/index
     components/links/index
     components/thumbnail/index
+    components/tomcat/index
+    components/structure/index
     
 .. toctree::
     :maxdepth: 3

@@ -2,19 +2,22 @@
 Installation
 ************
 
-Installation is done via setup.php located in the /admin directory
+Installation is done via the install scripts located in the /installer directory.
 
-PHP and PostgreSQL are required.
-
-Create a PostgreSQL database and run the installer.
+System Requirements
+=======================
+* PostgreSQL 16
+* PHP >= 8.1
+* 2 GB RAM
+* 5 GB Disk
+* Tested on Ubuntu 22
 
 Running the Installer
 =======================
 
-Clone or download the repoistory
+Clone or download the repoistory:
 
 .. code-block:: console
-   :linenos:
 
     git clone https://github.com/AcuGIS/Jasper-Publisher
     mv Jasper-Publisher-master Jasper-Publisher
@@ -22,16 +25,16 @@ Clone or download the repoistory
 Navigate to /JasperPublisher and run the installers:
 
 .. code-block:: console
-   :linenos:
+ 
 
    ./installer/postgres.sh
    ./installer/app-install.sh
    ./installer/jri-install.sh
+   ./installer/jri-sample.sh
 
 Optionally, run below to provision SSL using letsencrypt:
 
 .. code-block:: console
-   :linenos:
 
    apt-get -y install python3-certbot-apache
 
@@ -44,11 +47,11 @@ Navigate to https://yourdomain.com/admin/setup.php:
 
 Enter the information for the PostgreSQL database you created:
 
-.. image:: _static/install-2.png
+.. image:: _static/install-screen-2.png
 
 The installer will create the required objects in PostgreSQL
 
-When the installer completes, you can log in using the default admin@admin.com/1234
+When the installer completes, you can log in using the email and password you selected above.
 
 .. image:: _static/install-3.png
 

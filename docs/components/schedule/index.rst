@@ -14,11 +14,13 @@ Click the Add Schedule button
 
 The top section includes required fields:
 
-.. image:: ../../_static/schedule-2.png
+.. image:: ../../_static/schedule-options-0.png   
 
-The bottom section includes option fields for email reports
 
-.. image:: ../../_static/schedule-4.png
+The bottom section includes optional fields for email reports
+
+.. image:: ../../_static/schedule-options-1.png
+
 
 Scheduling Options
 ==================
@@ -104,40 +106,38 @@ The Optional Params tab allows you to:
 1. Set email subject
 2. Set email message
 3. Add report parameters
+4. Use HTML Templates for email
+
+
+Email HTML Templates
+=====================
+
+The directory for storing HTML templates for email is::
+
+     /home/tomcat/apache-tomcat-version/jasper_reports/email_tmpl 
+
+This directory contains a started template you can customize (email_template.html).
+
+You can also add your own templates to this directory as well.
+
+Any templates in this directory will appear in the dropdown box on the Report Schedule page;
+
+.. image:: ../../_static/schedule-4.png
+
+Using the included email_template.html, the Report email will look like below:
+
+.. image:: ../../_static/email-templates.png
 
 
 URL Parameters
 ===============
 
-To add a Report Parameter to the report URL, enter the variable in the left box and the value in the right box as shown below:
+To add Report Parameters to the report URL, enter the parameter(s) as shown below:
 
-.. image:: _static/schedule-params.png
-
-
-Click the Save button.
-
-.. image:: _static/schedule-optional-params.png
+.. image:: ../../_static/parameter-url.png
 
 You can add as many parameters as you wish to.
 
-Finally, click the Creat button to schedule the report.
-
-Additional Examples
-===================
-
-Below are some additional examples.
-
-**Send report every Tuesday at 1500 (3 PM)**
-
-.. image:: _static/schedule-tuesdays.png
-
-**Send report every hour without email delivery**
-
-.. image:: _static/schedule-hour.png
-
-**Send report weekly with StudentID = 51**
-
-.. image:: _static/schedule-weekly.png
 
    
 

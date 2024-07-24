@@ -1,8 +1,7 @@
 Commercial Support
 -----------------
 
-Commercial Support is available via `Cited, Inc.`_
+Professional Hosting and Support is available via `AcuGIS`_
 
-.. _`Cited, Inc.`: https://www.citedcorp.com
+.. _`AcuGIS`: https://www.acugis.com/jasper-publisher-hosting.html
 
-In addition to JRI Publisher, Cited, Inc. also offers a multi-user edition written in PHP.

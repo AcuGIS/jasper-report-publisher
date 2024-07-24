@@ -6,7 +6,7 @@
 
 ## Publish, schedule, email, and run reports on demand
 
-![QuartzMap](QuartzMap-Main.png)
+![QuartzMap](docs/_static/Jasper-Publisher-Main-min.png)
 
 
 ## Install
@@ -68,7 +68,7 @@ Printing of GroupedReports requires phantomjs to be installed on your server.
  
 ## Documentation
 
-QuartMap Web Client [Documentation](https://quartzmap.docs.acugis.com).
+QuartMap Web Client [Documentation](https://jasper-report-publisher.docs.acugis.com).
 
 
 ## License

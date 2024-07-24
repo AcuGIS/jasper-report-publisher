@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SimpleBees" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cfd6f5b1-fc13-4090-9aca-7f142db2a09d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SimpleBee"/>
+	<subDataset name="Dataset1" uuid="12afe441-ccd7-4fe8-b965-3ab3b8c62b78">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SimpleBee"/>
+		<queryString language="SQL">
+			<![CDATA[ select apiary.kind_of_disease,  apiary.beekeeper,  apiary.bee_amount FROM   apiary ]]>
+		</queryString>
+		<field name="beekeeper" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="beekeeper"/>
+			<property name="com.jaspersoft.studio.field.label" value="beekeeper"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+		</field>
+		<field name="kind_of_disease" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="kind_of_disease"/>
+			<property name="com.jaspersoft.studio.field.label" value="kind_of_disease"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+		</field>
+		<field name="bee_amount" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="bee_amount"/>
+			<property name="com.jaspersoft.studio.field.label" value="bee_amount"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+		</field>
+		<group name="beekeeper">
+			<groupExpression><![CDATA[$F{beekeeper}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Dataset2" uuid="22f977b1-6190-4ebe-9424-51a160a94d89">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SimpleBee"/>
+		<queryString language="SQL">
+			<![CDATA[select apiary.beekeeper,  apiary.bee_amount from apiary]]>
+		</queryString>
+		<field name="beekeeper" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="beekeeper"/>
+			<property name="com.jaspersoft.studio.field.label" value="beekeeper"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+		</field>
+		<field name="bee_amount" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="bee_amount"/>
+			<property name="com.jaspersoft.studio.field.label" value="bee_amount"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+		</field>
+		<group name="beekeeper">
+			<groupExpression><![CDATA[$F{beekeeper}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select apiary.beekeeper, apiary.bee_species, apiary.bee_amount, apiary.disease from  apiary]]>
+	</queryString>
+	<field name="beekeeper" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="beekeeper"/>
+		<property name="com.jaspersoft.studio.field.label" value="beekeeper"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+	</field>
+	<field name="bee_species" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bee_species"/>
+		<property name="com.jaspersoft.studio.field.label" value="bee_species"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+	</field>
+	<field name="bee_amount" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bee_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="bee_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+	</field>
+	<field name="disease" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="disease"/>
+		<property name="com.jaspersoft.studio.field.label" value="disease"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apiary"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="d9e27201-348b-48e4-a487-f8cc5d779585"/>
+				<staticText>
+					<reportElement x="20" y="20" width="360" height="43" forecolor="#FFFFFF" uuid="12534af1-5fe0-4c16-b978-63590672f89a"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Bee Disease Types]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<summary>
+		<band height="229">
+			<bar3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="478" height="200" uuid="157ae56b-8c3e-4987-9ec8-9f976749944e"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{bee_species}]]></seriesExpression>
+						<categoryExpression><![CDATA[0]]></categoryExpression>
+						<valueExpression><![CDATA[Integer.parseInt($F{bee_amount})]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>

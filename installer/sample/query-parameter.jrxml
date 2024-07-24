@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.2.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="newbee" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc2b52b0-ccf9-461b-9f8f-aa36678d6621">
+	<parameter name="beespecies" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Apis Mellifera Carnica"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="beekeeper" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Stephen Hawking"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select  apiary.bee_species ,  apiary.beekeeper, apiary.bee_amount  from  apiary where apiary.bee_species =  $P{beespecies}  AND apiary.beekeeper =  $P{beekeeper}]]>
+	</queryString>
+	<field name="bee_species" class="java.lang.String"/>
+	<field name="bee_amount" class="java.math.BigDecimal"/>
+	<field name="beekeeper" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{bee_species}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField hyperlinkType="">
+					<reportElement mode="Opaque" x="-10" y="-49" width="585" height="55" forecolor="#006699" backcolor="#E6E6E6" uuid="fd2d81b7-b157-44f3-9695-56189d962925"/>
+					<textElement verticalAlignment="Middle">
+						<font size="24" isBold="true"/>
+						<paragraph leftIndent="15"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{bee_species}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="66df85fe-67bb-4543-8218-a4f15312c298"/>
+				<staticText>
+					<reportElement x="20" y="20" width="360" height="43" forecolor="#FFFFFF" uuid="b137d640-5ecf-4a92-b09a-f67f0dba312f"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Query Parameter]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="8d036a6c-bdc6-4678-9c54-2668a3c5e340"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Multi Parameter Query]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="49"/>
+	</columnHeader>
+	<detail>
+		<band height="91">
+			<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="Group1">
+				<reportElement x="140" y="21" width="210" height="41" uuid="2d62a9e3-dfb9-45e9-a9fd-62c66ccafac2"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bee_amount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="Group1">
+				<reportElement x="140" y="-17" width="210" height="41" uuid="65f07803-6dce-4617-bf30-17ec570fd5c8"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{beekeeper}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="-17" width="100" height="43" uuid="4549fd81-d61c-487c-9b41-39752f968e55"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Beekeeper:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="21" width="100" height="43" uuid="4f02815f-ae23-4156-90bd-ace983b9b614"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Amount:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="3c3ab65a-492b-48b0-9c0e-6c3b62d44c21"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="36cf393c-d449-48d6-8f6d-b2c4482fa82e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="beeef833-7af9-47ee-bd57-b5c459cf0462"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

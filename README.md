@@ -6,7 +6,7 @@
 
 ## Publish, schedule, email, and run reports on demand
 
-![QuartzMap](docs/_static/jasper-report-publisher-github.png)
+![Jasper Report Publisher](docs/_static/jasper-report-publisher-github.png)
 
 ## Overview
 
@@ -16,7 +16,7 @@ It supports PotgreSQL, Oracle, MySQL, and MSSQL and you can add additional data 
 
 Jasper Report Publisher is free, Open Source software built around [JasperReportsIntegration](https://[pages.github.com](https://github.com/daust/JasperReportsIntegration)/). 
 
-![QuartzMap](docs/_static/jasper-report-publisher-github-page.png)
+![Jasper Report Publisher](docs/_static/jasper-report-publisher-github-page.png)
 
 
 ## Install
@@ -78,7 +78,7 @@ Printing of GroupedReports requires phantomjs to be installed on your server.
  
 ## Documentation
 
-QuartMap Web Client [Documentation](https://jasper-report-publisher.docs.acugis.com).
+Jasper Report Publisher [Documentation](https://jasper-report-publisher.docs.acugis.com).
 
 
 ## License

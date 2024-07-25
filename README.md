@@ -1,6 +1,6 @@
 # Jasper Report Publisher
 
-[![Documentation Status](https://readthedocs.org/projects/jri-viewer/badge/?version=latest)](https://asper-report-publisher.docs.acugis.com/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/jri-viewer/badge/?version=latest)](https://jasper-report-publisher.docs.acugis.com/en/latest/?badge=latest)
 
 
 

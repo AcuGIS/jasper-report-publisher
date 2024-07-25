@@ -56,6 +56,14 @@ When the installer completes, you can log in using the email and password you se
 
 .. image:: _static/install-3.png
 
+
+Sample Data
+===================
+
+If you load the Sample Data, be sure to restart Tomcat when you log in.
+
+You can restart Tomcat via Services on the left menu.
+
 PhantomJS
 ===================
 

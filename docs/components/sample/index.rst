@@ -16,7 +16,7 @@ Overview
 
 If you select the "Load Sample Data" box, it will create a sample database and reports.
 
-If you load the Sample Data, you will need to restart Tomcat in order to pick up sample data.
+**IMPORTANT** : If you load the Sample Data, you will need to restart Tomcat in order to pick up sample data.
 
 .. image:: ../../_static/tomcat-restart.png
 

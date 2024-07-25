@@ -8,8 +8,8 @@ System Requirements
 =======================
 * PostgreSQL 16
 * PHP >= 8.1
-* 2 GB RAM
-* 5 GB Disk
+* 4 GB RAM
+* 15 GB Disk
 * Tested on Ubuntu 22
 
 Running the Installer

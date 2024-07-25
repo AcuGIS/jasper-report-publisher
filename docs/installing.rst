@@ -15,18 +15,19 @@ System Requirements
 Running the Installer
 =======================
 
-Clone or download the repoistory:
+Download the Jasper Report Publisher and unzip:
 
 .. code-block:: console
 
-    git clone https://github.com/AcuGIS/Jasper-Publisher
-    mv Jasper-Publisher-master Jasper-Publisher
+    wget https://github.com/AcuGIS/jasper-report-publisher/releases/download/2.11.0/jasper-report-publisher-2.11.0.zip
+    unzip -q jasper-report-publisher-2.11.0.zip
+    
 
-Navigate to /JasperPublisher and run the installers:
+Change to the /jasper-report-publisher-2.11.0 directory and run the installers in sequence below:
 
 .. code-block:: console
  
-
+    cd jasper-report-publisher-2.11.0
    ./installer/postgres.sh
    ./installer/app-install.sh
    ./installer/jri-install.sh

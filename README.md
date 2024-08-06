@@ -18,6 +18,8 @@ Jasper Report Publisher is free, Open Source software built around [JasperReport
 
 ![Jasper Report Publisher](docs/_static/jasper-report-publisher-github-page.png)
 
+![Jasper Report Publisher](docs/_static/bee-report.png)
+
 
 ## Install
 Install on Ubuntu 22

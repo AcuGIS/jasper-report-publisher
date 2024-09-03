@@ -79,6 +79,9 @@ When the installer completes, you can log in using the email and password you se
 
 ![Setup](docs/_static/install-3.png)
 
+### Note: 
+If you installed the demo reports, be sure to restart Tomcat once logged in.
+
 PhantomJS
 ===================
 

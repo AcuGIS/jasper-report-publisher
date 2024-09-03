@@ -41,12 +41,23 @@ Clone or download the repoistory::
 
     git clone https://github.com/AcuGIS/Jasper-Publisher    
 
-Navigate to /JasperPublisher and run the installers::
+Navigate to /JasperPublisher and make the installation scripts executable::
+
+
+      cd Jasper-Publisher
+      chmod +x installer/postgres.sh installer/app-install.sh installer/jri-install.sh installer/jri-sample.sh
+
+Run the installers::
 
      ./installer/postgres.sh
      ./installer/app-install.sh
      ./installer/jri-install.sh
      ./installer/jri-sample.sh
+
+
+Note: if you get Permission denied, make the scripts executable:
+
+     
 
 Optionally, run below to provision SSL using letsencrypt::
 

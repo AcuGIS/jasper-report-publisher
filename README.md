@@ -39,8 +39,7 @@ Running the Installer
 
 Clone or download the repoistory::
 
-    git clone https://github.com/AcuGIS/Jasper-Publisher
-    mv Jasper-Publisher-master Jasper-Publisher
+    git clone https://github.com/AcuGIS/Jasper-Publisher    
 
 Navigate to /JasperPublisher and run the installers::
 

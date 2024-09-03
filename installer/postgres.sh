@@ -72,7 +72,7 @@ CMD_EOF
 		chmod 400 server.key
 
 		openssl req -new -key server.key -days 3650 -out server.crt -passin pass:${SSL_PASS} -x509 -subj '/C=CA/ST=Frankfurt/L=Frankfurt/O=acuciva-de.com/CN=acuciva-de.com/emailAddress=info@acugis.com'
-		chown postgres.postgres server.key server.crt
+		chown postgres:postgres server.key server.crt
 		mv server.key server.crt /var/lib/postgresql/${PG_VER}/main
 	fi
 

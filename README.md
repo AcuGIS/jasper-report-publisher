@@ -32,7 +32,7 @@ System Requirements
 * PHP >= 8.1
 * 2 GB RAM
 * 5 GB Disk
-* Tested on Ubuntu 22
+* Tested on Ubuntu 22 and Ubuntu 24
 
 Running the Installer
 =======================

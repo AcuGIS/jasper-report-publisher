@@ -4,7 +4,7 @@ TOMCAT_MAJOR=9
 
 function install_tomcat(){
 
-	apt-get -y install haveged logrotate
+	apt-get -y install haveged logrotate libtcnative-1
 
 	if [ ! -d /home/tomcat ]; then
 		useradd -m tomcat

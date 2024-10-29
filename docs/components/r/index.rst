@@ -1,5 +1,5 @@
 *******
-R
+R Apps
 *******
 
 QuartzMap supports creating of a number of R HTML applications:

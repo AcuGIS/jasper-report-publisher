@@ -27,6 +27,10 @@ Jasper Report Publisher is free, Open Source software built around [JasperReport
 
 ![Jasper Report Publisher](docs/_static/simple-bee-report.png)
 
+#### Report Parameters:
+
+![Jasper Report Publisher](docs/_static/LOV-demo-1.png)
+
 
 #### Support for RPlotly and R Markdown Reports
 

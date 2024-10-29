@@ -28,7 +28,9 @@ Jasper Report Publisher
     components/reports/index
     components/parameters/index
     components/run/index
-    components/email/index      
+    components/email/index
+    components/qgis/index
+    components/r/index
     components/reportgroups/index
     components/context/index
     components/links/index

@@ -22,10 +22,12 @@
         function create($data)
         {
              $sql = "INSERT INTO PUBLIC." .$this->table_name."
-             (name,email,password,accesslevel) "."VALUES('".
+             (name,email,password,ftp_user,pg_password,accesslevel) "."VALUES('".
              $this->cleanData($data['name'])."','".
              $this->cleanData($data['email'])."','".
              password_hash($data['password'], PASSWORD_DEFAULT)."','".
+						 $this->cleanData($data['ftp_user'])."','".
+						 $this->cleanData($data['pg_password'])."','".
              $this->cleanData($data['accesslevel'])."') RETURNING id";
 
 						 $result = pg_query($this->dbconn, $sql);
@@ -70,6 +72,7 @@
 						while ($row = pg_fetch_assoc($result)) {
 							$rv[$row['id']] = $row['name'];
 						}
+						pg_free_result($result);
             return $rv;
         }
 
@@ -158,4 +161,50 @@
        {
          return pg_escape_string($this->dbconn, $val);
        }
+			 
+			 static public function create_ftp_user($ftp_user, $email, $hashed_pwd){
+		 		$descriptorspec = array(
+		 			0 => array("pipe", "r"),
+		 		  1 => array("pipe", "w"),
+		 		  2 => array("pipe", "w")
+		 		);
+
+		 		$process = proc_open('sudo /usr/local/bin/create_ftp_user.sh', $descriptorspec, $pipes, null, null);
+		 		
+		 		if (is_resource($process)) {
+		 			
+		 		    fwrite($pipes[0], $ftp_user."\n".$hashed_pwd."\n");
+		 		    fclose($pipes[0]);
+
+		 		    //echo stream_get_contents($pipes[1]);
+		 		    fclose($pipes[1]);
+		 				fclose($pipes[2]);
+
+		 		    // It is important that you close any pipes before calling proc_close in order to avoid a deadlock
+		 		    $return_value = proc_close($process);
+		 		}
+		 	}
+			
+			static public function update_ftp_user($ftp_user, $hashed_pwd){
+			 $descriptorspec = array(
+				 0 => array("pipe", "r"),
+				 1 => array("pipe", "w"),
+				 2 => array("pipe", "w")
+			 );
+
+			 $process = proc_open('sudo /usr/local/bin/update_ftp_user.sh', $descriptorspec, $pipes, null, null);
+			 
+			 if (is_resource($process)) {
+				 
+					 fwrite($pipes[0], $ftp_user."\n".$hashed_pwd."\n");
+					 fclose($pipes[0]);
+
+					 //echo stream_get_contents($pipes[1]);
+					 fclose($pipes[1]);
+					 fclose($pipes[2]);
+
+					 // It is important that you close any pipes before calling proc_close in order to avoid a deadlock
+					 $return_value = proc_close($process);
+			 }
+		 }
 	}

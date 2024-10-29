@@ -23,15 +23,18 @@
 				sidebar_row('services.php',				'play',	 										'Services');
 				sidebar_row('datasources.php', 		'database',									'Datasources');
 				sidebar_row('publish.php',				'publish',									'Publish');	
-				sidebar_row('schedules.php',			'book',											'Schedules');
-				sidebar_row('reporting.php',			'chart-pie',								'Reporting');
-				sidebar_row('files.php?p=',				'folder',										'Files');
+				sidebar_row('schedules.php',			'clock',											'Schedules');
+				sidebar_row('reporting.php',			'file-chart',								'Run Reports');
+				sidebar_row('maps.php',						'chart-bar',							 				'QGIS and R');
 				echo "<hr>";	// JRI Viewer
-				sidebar_row('reports.php', 				'file-chart',								'Reports');
+				sidebar_row('reports.php', 				'file',								'Dashboard Reports');
 				sidebar_row('contexts.php', 		'comment-account-outline', 	'Report Contexts');
-				sidebar_row('groups.php', 				'group',										'Report Groups');
+				//sidebar_row('groups.php', 				'group',										'Report Groups');
 				sidebar_row('parameters.php', 		'filter', 									'Parameters');
-				sidebar_row('links.php', 					'account-settings-variant', 'Links');
+				//sidebar_row('links.php', 					'account-settings-variant', 'Links');
+				//echo "<hr>";
+				//sidebar_row('files.php?p=',				'folder',										'Files');
+				//sidebar_row('permalinks.php',			'share-variant',						'Share');
 				echo "<hr>";
 				sidebar_row('../index.php',				'exit-to-app',							'Front End');
 				sidebar_row('../logout.php',			'logout',										'Log Out');

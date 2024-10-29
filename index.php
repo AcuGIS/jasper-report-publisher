@@ -34,24 +34,32 @@
 		$rows2 = array();
 		
 		if(count($usr_grps)){
+			$usr_grps_keys = array_keys($usr_grps);
+			
 			# get report IDs from access groups
-			$usr_reps = $acc_obj->getGroupReports(array_keys($usr_grps));
+			$usr_reps = $acc_obj->getGroupReports($usr_grps_keys);
 			if(count($usr_reps)){
 				$group_rows = $database->getAll('jasper', "id IN (".implode(',', array_keys($usr_reps)).") AND is_grouped = 0", 'id');
 			}
 
 			# reports from report groups we own
-			$usr_rep_grps = $acc_obj->getGroupReportGroups(array_keys($usr_grps));
+			$usr_rep_grps = $acc_obj->getGroupReportGroups($usr_grps_keys);
 			if(count($usr_rep_grps)){
 				$usr_rep_grp_ids = array_keys($usr_rep_grps);
 	    	$rows1 = $database->getAll('groups', "id IN (".implode(',', $usr_rep_grp_ids).")", 'id');
 			}
 			
 			#links from access groups we are in
-			$usr_links = $acc_obj->getGroupLinks(array_keys($usr_grps));
+			$usr_links = $acc_obj->getGroupLinks($usr_grps_keys);
 			if(count($usr_links)){
 				$usr_link_ids = array_keys($usr_links);
 	    	$rows2 = $database->getAll('links', "id IN (".implode(',', $usr_link_ids).")", 'id');
+			}
+			
+			$usr_map_grps = $acc_obj->getGroupMapGroups($usr_grps_keys);
+			if(count($usr_map_grps)){
+				$usr_map_grps_ids = implode(',', array_keys($usr_map_grps));
+				$rows3 = $database->getAll('map', "id IN (".$usr_map_grps_ids.")",	'id');
 			}
 		}
 
@@ -99,6 +107,22 @@
             padding-right: calc(var(--bs-gutter-x) * .75);
             padding-left: calc(var(--bs-gutter-x) * .75);
         }
+
+@media (min-width: 768px) {
+    .row-cols-md-4>* {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+@media (min-width: 992px) {
+    .py-lg-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+
     </style>
 
   </head>
@@ -168,7 +192,7 @@ if(($user->accesslevel == 'Admin') || ($user->accesslevel == 'Devel')){
 										<h5 class="card-title" style="font-size: 15px; font-weight: 800;"><?=$row['name']?></h5>
 									</div>
 									<div class="px-3">
-										<div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: cover; background-position: center center;"></div>
+										<div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: contain; background-position: center center;"></div>
 									</div>
 									<?PHP if($row['description']) { ?>
 											<div class="card-body">
@@ -195,7 +219,7 @@ if(($user->accesslevel == 'Admin') || ($user->accesslevel == 'Devel')){
                     <h5 class="card-title" style="font-size: 15px; font-weight: 800;"><?=$row['name']?></h5>
                   </div>
                   <div class="px-3">
-                    <div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: cover; background-position: center center;"></div>
+                    <div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: contain; background-position: center center;"></div>
                   </div>
                   <?PHP if($row['description']) { ?>
                       <div class="card-body">
@@ -220,7 +244,7 @@ if(($user->accesslevel == 'Admin') || ($user->accesslevel == 'Devel')){
                     <h5 class="card-title" style="font-size: 15px; font-weight: 800;"><?=$row['name']?></h5>
                   </div>
                   <div class="px-3">
-                    <div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: cover; background-position: center center;"></div>
+                    <div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: contain; background-position: center center;"></div>
                   </div>
 									<?PHP if($row['description']) { ?>
                       <div class="card-body">
@@ -232,7 +256,26 @@ if(($user->accesslevel == 'Admin') || ($user->accesslevel == 'Devel')){
           </div>
           <?PHP } ?>
 
-
+					<?php foreach($rows3 as $row) {		
+						$image = file_exists("assets/maps/{$row['id']}.png") ? "assets/maps/{$row['id']}.png" : "assets/maps/default.png"; ?>
+						<div class="col">
+								<a href="apps/<?=$row['id']?>/index.php" style="text-decoration:none; color: #6c757d!important; font-size: 1.25rem; font-weight: 300;">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title" style="font-size: 15px; font-weight: 800;"><?=$row['name']?></h5>
+										</div>
+										<div class="px-3">
+											 <div style="height: 150px; width: 100%; background: url('<?=$image?>') no-repeat; background-size: contain; background-position: center center;"></div>
+										</div>
+										<?PHP if($row['description']) { ?>
+											<div class="card-body">
+												<p class="card-text" style="color: #6c757d!important; font-size: 15px; font-weight: 600;"> <?=$row['description']?> </p>
+											</div>
+									<?PHP } ?>
+									</div>
+							</a>
+						</div>
+				<?php } ?>
 
 
 

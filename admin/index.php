@@ -34,15 +34,35 @@
 				a {
 text-decoration:none!important;
 }
+
+
+
+
+ul {
+  list-style-type: none;
+padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+
+
 		</style>
 
+ <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
 </head>
 
 <body>
+
+
+
+
    
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+
 
         <?php const MENU_SEL = 'index.php';
 					include("incl/topbar.php");
@@ -53,173 +73,211 @@ text-decoration:none!important;
             
             <div class="page-breadcrumb" style="padding-left:30px; padding-right: 30px; padding-top:0px; padding-bottom: 0px">
                 <div class="row align-items-center">
+                    <div class="col-6" style="padding-left:100px">
+
+                        <h2 class="mb-0 fw-bold">Jasper Publisher</h2>
+ 
+
+                    </div>
+                    
+                </div>
+            </div>
+
+
+           <br>
+            <div class="container-fluid" style="padding-left:130px">
+
+
+<div class="row">
+    <div class="card" style="width: 80%;">
+        <div class="row">
+            <div class="col-3" style="padding: 18px;">
+               <h4  style="font-size: 22px;"><i class="mdi mdi-clock" style="color:orange!important; "></i> System </h4>
+            </div>
+            
+          
+            
+            <div class="col-5" style="display: flex;align-items: center;">
+                <a href="registration.php" button type="button" class="btn btn-danger" >Add User</a>&nbsp;<a href="access_groups.php" button type="button" class="btn btn-danger" >Groups</a>&nbsp;<a href="services.php" button type="button" class="btn btn-danger" >Restart Tomcat</a>&nbsp;<a href="files.php?p=" button type="button" class="btn btn-danger" >File Browser</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="card" style="width: 80%;">
+        <div class="row">
+            <div class="col-3" style="padding:18px">
+              <h4  style="font-size: 22px;"><i class="mdi mdi-database" style="color:orange!important; "></i> Data Sources </h4>
+            </div>
+            
+              <!--<div class="col-2">
+                <div style="padding:20px">
+                    <p class="card-text">placeat?</p>
+                </div>
+            </div>-->
+            
+            <div class="col-5" style="display: flex;align-items: center;">
+                <a href="datasources.php"button type="button" class="btn btn-success">All</a>&nbsp;<a href="datasources.php?tab=pg" button type="button" class="btn btn-success">PostGIS</a>&nbsp;<a href="datasources.php?tab=gs" button type="button" class="btn btn-success">GeoServer</a>&nbsp;<a href="datasources.php?tab=import" button type="button" class="btn btn-success">Create Database</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card" style="width: 80%;">
+        <div class="row">
+            <div class="col-3" style="padding:18px">
+              <h4  style="font-size: 22px;"><i class="mdi mdi-file-chart" style="color:orange!important; "></i> Jasper Reports </h4>
+            </div>
+            
+            <!--<div class="col-2">
+                <div style="padding:20px">
+                    <p class="card-text">placeat?</p>
+                </div>
+            </div>-->
+            
+            <div class="col-6" style="display: flex;align-items: center;">
+                <a href="publish.php" button type="button" class="btn btn-primary">Publish</a>&nbsp;<a href="schedules.php" button type="button" class="btn btn-primary">Schedule</a>&nbsp;<a href="reporting.php" button type="button" class="btn btn-primary">Run
+</a>&nbsp;<a href="parameters.php" button type="button" class="btn btn-primary">Parameters
+
+</a>&nbsp;<a href="contexts.php" button type="button" class="btn btn-primary">Context
+</a>&nbsp;<a href="reports.php" button type="button" class="btn btn-primary">Dashboard Report</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="card" style="width: 80%;">
+        <div class="row">
+            <div class="col-3" style="padding:18px">
+<h4  style="font-size: 22px;"><i class="mdi mdi-map" style="color:orange!important; "></i> More </h4>
+            </div>
+            
+              
+            
+            <div class="col-5" style="display: flex;align-items: center;">
+                <a href="maps.php" button type="button" class="btn btn-warning" >QGIS and R</a>&nbsp;<a href="linkss.php" button type="button" class="btn btn-info" >Links</a>&nbsp;<a href="permalinks.php" button type="button" class="btn btn-info" >Share</a>&nbsp;<a href="../index.php" button type="button" class="btn btn-success" >Frontend</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+                <div class="row align-items-center">
                     <div class="col-6">
 
-                        <h1 class="mb-0 fw-bold">Dashboard</h1>
-                    </div>
-                    <div class="col-6">
+                        <h3 class="mb-0 fw-bold"><br>Help Topics</h3>
+ 
 
                     </div>
+                    
                 </div>
-            </div>
-           
-            <div class="container-fluid">
 
-				<!-- 7. Stats card --><div class="row">
-          <div class="              d-flex
-              border-bottom
-              title-part-padding
-              px-0
-              mb-3
-              align-items-center
-            "
-          >
 
-          </div>
-          <div class="row">
-            <div class="col-md-4 col-xl-2 d-flex align-items-stretch">
-              <a
-                href="reports.php"
-                class="card bg-secondary text-white w-100 card-hover">
-                <div class="card-body" style="text-decoration: none">
-                  <div class="d-flex align-items-center">
-                    <span class="ri-shopping-basket-2-line display-6"></span>
-                    <div class="ms-auto">
-                      <i data-feather="arrow-right" class="fill-white"></i>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <h4 class="card-title mb-1 text-white" style="text-decoration: none">Reports</h4>
-                    <h6 class="card-text fw-normal text-white-50" style="text-decoration: none">
-                      Add and edit reports
-                    </h6>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 col-xl-2 d-flex align-items-stretch">
-              <a
-                href="parameters.php"
-                class="card bg-warning text-white w-100 card-hover"
-              >
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <span class="bi bi-cup-straw display-6"></span>
-                    <div class="ms-auto">
-                      <i data-feather="arrow-right" class="fill-white"></i>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <h4 class="card-title mb-1 text-white">Parameters</h4>
-                    <h6 class="card-text fw-normal text-white-50">
-                      Add and edit Parameters
-                    </h6>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 col-xl-2 d-flex align-items-stretch">
-              <a
-                href="groups.php"
-                class="card bg-danger text-white w-100 card-hover"
-              >
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <span class="ri-calendar-event-line display-6"></span>
-                    <div class="ms-auto">
-                      <i data-feather="arrow-right" class="fill-white"></i>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <h4 class="card-title mb-1 text-white">
-                      Report Groups
-                    </h4>
-                    <h6 class="card-text fw-normal text-white-50">
-                      Add and edit Report Groups
-                    </h6>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 col-xl-2 d-flex align-items-stretch">
-              <a
-                href="show_input.php"
-                class="card bg-primary text-white w-100 card-hover"
-              >
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <span class="ri-apple-fill display-6"></span>
-                    <div class="ms-auto">
-                      <i data-feather="arrow-right" class="fill-white"></i>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <h4 class="card-title mb-1 text-white">
-                      Contexts
-                    </h4>
-                    <h6 class="card-text fw-normal text-white-50">
-                      Add and Edit Contexts
-                    </h6>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 col-xl-2 d-flex align-items-stretch">
-              <a
-                href="users.php"
-                class="card bg-info text-white w-100 card-hover"
-              >
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <span class="ri-folders-line display-6"></span>
-                    <div class="ms-auto">
-                      <i data-feather="arrow-right" class="fill-white"></i>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <h4 class="card-title mb-1 text-white">Users</h4>
-                    <h6 class="card-text fw-normal text-white-50">
-                      Manage Users
-                    </h6>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 col-xl-2 d-flex align-items-stretch">
-              <a
-                href="../index.php"
-                class="card bg-success text-white w-100 card-hover"
-              >
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <span class="ri-spam-2-line display-6"></span>
-                    <div class="ms-auto">
-                      <i data-feather="arrow-right" class="fill-white"></i>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <h4 class="card-title mb-1 text-white">
-                      Front End
-                    </h4>
-                    <h6 class="card-text fw-normal text-white-50">
-                      View front end without logging out
-                    </h6>
-                  </div>
-                </div>
-              </a>
+
+       
+
+          
+          <div class="row" >
+            <div class="col-auto" style="padding-right:30px">
+                 <h3> System </h3>
+
+<ul>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/users/index.html" target="_blank">Users</a> </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/usergroups/index.html" target="_blank">User Groups</a> </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/tomcat/index.html" target="_blank">Services</a> </li>
+<!--<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/users/index.html" target="_blank">Files</a> </li>-->
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/email/index.html" target="_blank">Email Configuration</a> </li>
+
+</ul>
+
             </div>
 
-          </div>
-         
+
+ <div class="col-auto" style="padding-right:30px">
+                 <h3> Data Sources </h3>
+
+<ul>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/data/index.html" target="_blank">All</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/users/index.html" target="_blank">PostGIS</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/users/index.html" target="_blank">GeoServer</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/users/index.html" target="_blank">Create</a>  </li>
+
+</ul>
+
+            </div>
+
+
+
+            <div class="col-auto" style="padding-right:30px">
+                  <h3> Jasper Reports</h3>
+
+<ul>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/publish/index.html" target="_blank">Publish</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/schedule/index.html" target="_blank">Schedule</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/parameters/index.html" target="_blank">Parameters</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/context/index.html" target="_blank">Context</a>  </li>
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/run/index.html" target="_blank">Manual Run</a>  </li>
+
+
+
+
+</ul>
+            </div>
+            <div class="col-auto" style="padding-right:30px">
+<h3> QGIS</h3>
+               <ul>
+
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/qgis/index.html" target="_blank">Docs</a>  </li>
+
+</ul>
+            </div>
+            <div class="col-auto" style="padding-right:30px">
+               <h3> R </h3>
+               <ul>
+
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/r/index.html" target="_blank">Docs </a> </li>
+
+
+</ul>
+             </div>
+
+ <div class="col-auto" style="padding-right:30px">
+<h3> Links  </h3>
+               <ul>
+
+<li> <a href="https://jasper-report-publisher.docs.acugis.com/en/latest/components/links/index.html" target="_blank">Publish </a> </li>
+
+</ul>
+            </div>
+
+
+
+
+
 
 
 
 
 
                 
-                <div class="row">
-                    
-                </div>
+               
                 
             </div>
            

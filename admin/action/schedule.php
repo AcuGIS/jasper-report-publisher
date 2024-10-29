@@ -33,36 +33,39 @@ if(isset($_POST['delete']) || isset($_POST['update']) ){
 	}
 	
 	
-	$sched = $obj->getById($_POST['schid']);
+	$sched = $obj->getById($_POST['id']);
 	if($sched === false){
 		$result = ['success' => false, 'message' => 'No such schedule'];
 		echo json_encode($result);
 		return;
 	}
 
-  $old_period = $sched['cron_period'];
+	$sch_env  = get_jasper_home().'/schedules/'.$_POST['id'].'_env.sh';
 
-  $cronfile = get_jri_cronfile($old_period);  #file with old cron entry
-  $sch_env  = get_jasper_home().'/schedules/'.$_POST['schid'].'_env.sh';
-	
-	$lines = file($cronfile, FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
-	
-  #get line number from schedule id
-  $ln = find_cron_ln($lines, $_POST['schid']);
+	$old_period = $sched['cron_period'];
+	if($old_period == 'never'){
+		$lines = [' '];
+		$ln = 0;
+	}else{
+	  $cronfile = get_jri_cronfile($old_period);  #file with old cron entry
+		$lines = file($cronfile, FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
+		#get line number from schedule id
+	  $ln = find_cron_ln($lines, $_POST['id']);
+	}
+
 	if($ln != -1){
 
 		if(isset($_POST['delete'])){
 			$lines[$ln] = "\n";
 			unlink($sch_env);
 			
-			if($obj->delete($_POST['schid'])){
-				$result = ['success' => true, 'message' => 'Schedule '.$_POST['schid'].' deleted!'];	
+			if($obj->delete($_POST['id'])){
+				$result = ['success' => true, 'message' => 'Schedule '.$_POST['id'].' deleted!'];	
 			}else{
-				$result = ['success' => false, 'message' => 'Schedule '.$_POST['schid'].' deleted but record delete failed!'];
+				$result = ['success' => false, 'message' => 'Schedule '.$_POST['id'].' deleted but record delete failed!'];
 			}
 			
 	  }else{
-			$_POST['id'] = $_POST['schid'];
 			if(!isset($_POST['noemail'])){	// nomail checkbox is not posted, if uncheck
 				$_POST['noemail'] = 'f';
 			}
@@ -79,9 +82,12 @@ if(isset($_POST['delete']) || isset($_POST['update']) ){
 				$result = ['success' => true, 'message' => 'Schedule updated!'];
 		  }
 		}
-		write_file($lines, $cronfile);
-		if(str_ends_with($cronfile, '.crontab')){
-			shell_exec('crontab -u www-data '.$cronfile);
+		
+		if($old_period != 'never'){
+			write_file($lines, $cronfile);
+			if(str_ends_with($cronfile, '.crontab')){
+				shell_exec('crontab -u www-data '.$cronfile);
+			}
 		}
 		
   }else{
@@ -101,38 +107,42 @@ if(isset($_POST['create'])){	// add mode
 			}
 		}
 		
-		$_POST['schid'] = $obj->create($_POST);
+		$_POST['id'] = $obj->create($_POST);
 	}
 	
-	if($_POST['schid'] == 0){
+	if($_POST['id'] == 0){
 		$result = ['success' => false, 'message' => 'Schedule record create failed!'];
 	}else {
 		
-		$cronfile = get_jri_cronfile($_POST['cron_period']);
+		if($_POST['cron_period'] == 'never'){
+			build_sch_env($_POST);
+		}else{
+			$cronfile = get_jri_cronfile($_POST['cron_period']);
 
-	  if($_POST['cron_period'] == 'custom'){
+		  if($_POST['cron_period'] == 'custom'){
 
-	    #if file doesn't exist, add a header
-	    if(!is_file($cronfile)){
-	      $fh = fopen($cronfile, "w");
-				fwrite($fh, 'SHELL=/bin/sh'."\n");
-	      fwrite($fh, 'PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'."\n");
-				fwrite($fh, '# m h dom mon dow command'."\n");
-	      fclose($fh);
-	    }
-	  }
+		    #if file doesn't exist, add a header
+		    if(!is_file($cronfile)){
+		      $fh = fopen($cronfile, "w");
+					fwrite($fh, 'SHELL=/bin/sh'."\n");
+		      fwrite($fh, 'PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'."\n");
+					fwrite($fh, '# m h dom mon dow command'."\n");
+		      fclose($fh);
+		    }
+		  }
 
-		$fh = fopen($cronfile, "a");
-		fwrite($fh, build_cronline()."\n");
-	  fclose($fh);
+			$fh = fopen($cronfile, "a");
+			fwrite($fh, build_cronline()."\n");
+		  fclose($fh);
 
-		if($_POST['cron_period'] == 'custom'){
-			shell_exec('crontab -u www-data '.$cronfile);
+			if($_POST['cron_period'] == 'custom'){
+				shell_exec('crontab -u www-data '.$cronfile);
+			}
 		}
 
 		# copy to remote server
 		$mode = isset($_POST['update']) ? 'updated' : 'created';
-		$result = ['success' => true, 'message' => 'Schedule '.$_POST['schid'].' '.$mode.'!'];
+		$result = ['success' => true, 'message' => 'Schedule '.$_POST['id'].' '.$mode.'!'];
 	}
 }
 

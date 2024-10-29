@@ -9,7 +9,7 @@
 	}
 
 	$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
-	$user_obj = new user_Class($database->getConn(), 0);
+	$user_obj = new user_Class($database->getConn());
 
 	if(isset($_POST['submit'])&&!empty($_POST['submit'])){
 			$row = $user_obj->loginCheck($_POST['pwd'], $_POST['email']);

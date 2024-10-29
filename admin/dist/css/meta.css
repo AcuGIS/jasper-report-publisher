@@ -27,7 +27,8 @@
     word-wrap: break-word;
     background-color: #fff;
     border: none !important;
-    border-radius: inherit;
+/*    border-radius: inherit; */
+border-radius: 20px; overflow: hidden;
 }
 
 
@@ -74,7 +75,7 @@ html {
 
 .left-sidebar {
     position: absolute;
-    width: 260px;
+    width: 320px;
     height: 100%;
     top: 0px;
     border-right: 1px solid #36454F;
@@ -94,11 +95,11 @@ html {
 
 .left-sidebar {
     position: absolute;
-    width: 260px;
+    width: 320px;
     height: 100%;
     top: 0px;
     border-right: 1px solid #36454F;
     z-index: 10;
-    padding-top: 20px;
+    padding-top: 40px;
     background: #fff;
 }

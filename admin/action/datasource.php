@@ -287,6 +287,14 @@
 						$result = ['success' => true, 'message' => 'Data Successfully Deleted!'];
 					}
 				}
+			} else if(isset($_POST['pwd_vis'])) {
+				
+				$row = $obj->getById($ds_id);
+				if($row == FALSE){
+					$result = ['success' => false, 'message' => 'Failed to get password!'];
+				}else{
+					$result = ['success' => true, 'message' => $row['password']];
+				}
 			}
     }
 

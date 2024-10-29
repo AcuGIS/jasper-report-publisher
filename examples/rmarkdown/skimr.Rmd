@@ -1,0 +1,76 @@
+---
+title: "Jasper R Demo Report"
+author: "AcuGIS"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+# Introduction
+
+This report is for demo purposes. You can remove it via the menu.
+
+## Items used
+
+- R
+- RMD
+- PostgreSQL
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars, include = FALSE}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r skimr, warning = FALSE, message = FALSE}
+library(skimr)
+
+skim(cars)
+```
+
+You can also load data from PostgreSQL, like this:
+
+```{r sensors, warning = FALSE, message = FALSE}
+library(plotly)
+library(ggplot2)
+library(RPostgreSQL)
+
+conn <- RPostgreSQL::dbConnect("PostgreSQL", host = "localhost", dbname = "r_examples", user = "admin1", password = "e1rkWWZc3J")
+
+query_res <- dbGetQuery(conn, 'SELECT * FROM "sensor_readings";');
+sensor_readings <- as.data.frame(query_res);
+# sensor_readings$timestamp <- as.Date(sensor_readings$timestamp)
+
+plot_ly(sensor_readings, x=~timestamp, y=~humidity, text=~paste("Sensor: ", sensor_name), mode="markers", color=~humidity, size=~humidity) %>%
+		layout(
+				plot_bgcolor='#e5ecf6',
+				xaxis = list(  matches='x',
+											 zerolinecolor = '#ffff',
+											 zerolinewidth = 2,
+											 gridcolor = 'ffff',
+											 range = list(	min(sensor_readings$timestamp),
+											 								max(sensor_readings$timestamp))
+																		),
+				yaxis = list(
+					zerolinecolor = '#ffff',
+					zerolinewidth = 2,
+					gridcolor = 'ffff')
+	)
+```

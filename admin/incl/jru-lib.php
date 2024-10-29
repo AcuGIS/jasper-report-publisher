@@ -1,5 +1,4 @@
 <?php
-	const CRON_PERIOD = array('custom', 'hourly', 'daily', 'weekly', 'monthly');
 	const REP_FORMATS = array('pdf', 'html', 'html2', 'rtf', 'xls', 'jxl', 'csv', 'xlsx', 'pptx', 'docx');
 	const DS_KEYS			= array('type', 'name', 'url', 'username', 'password');
 	const SCH_KEYS		= array('cron_period', 'name', 'format', 'datasource', 'filename', 'email', 'email_subj', 'email_body', 'url_opt_params', 'noemail', 'email_tmpl');
@@ -105,7 +104,7 @@ function get_all_rep_ids(){
 
 function build_sch_env($schedule, $run_env = false){
 	# NOTE: use unique ID to avoid two users using the same x_env.sh file!
-	$env_id = ($run_env) ? 1000000 + $_SESSION[SESS_USR_KEY]->id : $schedule['schid'];
+	$env_id = ($run_env) ? 1000000 + $_SESSION[SESS_USR_KEY]->id : $schedule['id'];
 	
 	$sch_env = get_jasper_home().'/schedules/'.$env_id.'_env.sh';	
 
@@ -119,7 +118,7 @@ function build_sch_env($schedule, $run_env = false){
 		$schedule['email_body'] = preg_replace('/(\r?\n)+/', '<\/br>/', $schedule['email_body']);
 	}
 
-  $vars = array('schid'=> $schedule['schid'],
+  $vars = array('id'=> $schedule['id'],
               'REP_ID'=> $schedule['name'], 'REP_FORMAT'=>$schedule['format'],
               'REP_DATASOURCE'=>$schedule['datasource'], 'REP_FILE'=>$schedule['filename'],
               'OPT_PARAMS'=> implode('&', $optParams));
@@ -136,7 +135,7 @@ function build_sch_env($schedule, $run_env = false){
 
 function build_cmd_line($schedule){
 
-  $cmd = JRI_REPORT_SCRIPT.' '.$schedule['schid']; # ex. gen_jri_report.sh /home/tomcat/apache-tomcat-8.5.50/schedules/1_env.sh
+  $cmd = JRI_REPORT_SCRIPT.' '.$schedule['id']; # ex. gen_jri_report.sh /home/tomcat/apache-tomcat-8.5.50/schedules/1_env.sh
   if($schedule['noemail'] == 't'){
     $cmd .= ' nomail'; # ex. gen_jri_report.sh 1 nomail
   }

@@ -1,0 +1,47 @@
+[type="date"] {
+    background: #fff url(./calendar.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+.date-control-container{
+    display: flex;
+}
+
+.date-control-container input {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 4px 10px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    height: 25px;
+    font-size: 15px;
+}
+
+.next-icon{
+    background: #ffffffde url(./next.png) 97% 50% no-repeat;
+    float: right;
+    width: 20px;
+    height: 27px;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-left: 1px;
+}
+
+.back-icon{
+    background: #ffffffde url(./back.png) 97% 50% no-repeat;
+    float: left;
+    width: 20px;
+    height: 27px;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-right: 1px;
+}

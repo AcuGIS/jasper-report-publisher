@@ -27,28 +27,20 @@ if(!empty($_GET['file'])) {
 	readfile($report_path);
 
 }else {	// run through GET or POST
-	
-	$sched = null;
-	
-	// check for schedule id parameter
-	$schid = -1;
-	if(($_SERVER['REQUEST_METHOD'] === 'POST') && (!empty($_POST['schid'])) ){
-		$schid = $_POST['schid'];
-	}else if (!empty($_GET['schid'])){
-		$schid = $_GET['schid'];
-	}else{
-		die('Error: No schedule id!');
-	}
 
-	// check if schedule id is valid
-	$obj = new schedule_Class($database->getConn());
-	$sched = $obj->getById($schid);
-	if($sched === false){
-		die('Error: Invalid schedule id!');
-	}
-	
 	// build the command to run
 	if($_SERVER['REQUEST_METHOD'] === 'POST'){
+		
+		if(isset($_POST['id'])){
+			$obj = new schedule_Class($database->getConn());
+			$sched = $obj->getById($_POST['id']);
+			if($sched === false){
+				die('Error: Invalid schedule id!');
+			}
+		}else{
+			$_POST['id'] = 1000000 + $_SESSION[SESS_USR_KEY]->id;
+		}
+		
 		# check if schedule has to run now
 		if($_POST['cron_period'] == 'now'){
 			# convert datasource id to name
@@ -64,7 +56,17 @@ if(!empty($_GET['file'])) {
 		$cmd = build_cmd_line($_POST);
 		
 	} else {
-		$sched['schid'] = $sched['id'];
+		
+		if(empty($_GET['id'])){
+			die('Error: No schedule id!');
+		}
+		// check if schedule id is valid
+		$obj = new schedule_Class($database->getConn());
+		$sched = $obj->getById($_GET['id']);
+		if($sched === false){
+			die('Error: Invalid schedule id!');
+		}
+		
 		$out_fmt = isset($_GET['out']) ? $_GET['out'] : 'txt';
 		$cmd = build_cmd_line($sched);
 	}

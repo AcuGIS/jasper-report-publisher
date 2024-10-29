@@ -9,10 +9,9 @@
     if(isset($_SESSION[SESS_USR_KEY]) && in_array($_SESSION[SESS_USR_KEY]->accesslevel, ADMINISTRATION_ACCESS)) {
 			$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
 	    $obj = new link_Class($database->getConn());
-			$users = $obj->getRows();
+			$id = empty($_POST['id']) ? 0 : intval($_POST['id']);
 		
         if(isset($_POST['save'])) {
-            $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
             $newId = 0;
 
             if($id) { // update
@@ -27,7 +26,7 @@
 							$result = ['success' => false, 'message' => 'Failed to save Link!'];
 						}
         } else if(isset($_POST['delete'])) {
-					if($obj->delete(intval($_POST['id']))){
+					if($obj->delete($id)){
 						$result = ['success' => true, 'message' => 'Data Successfully Deleted!'];
 					}else{
 						$result = ['success' => false, 'message' => 'Error: Data Not Deleted!'];

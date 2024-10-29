@@ -39,6 +39,28 @@
             $sql = "select * from public." .$this->table_name . " ORDER BY id DESC";
            return pg_query($this->dbconn, $sql);
         }
+				
+				function getRowsArr(){
+						$rv = array();
+						$result = $this->getAccessGroups();
+						while ($row = pg_fetch_assoc($result)) {
+							$rv[$row['id']] = $row['name'];
+						}
+						pg_free_result($result);
+            return $rv;
+        }
+				
+				function getByUserId($user_id){
+						$rv = array();
+
+						$sql ="select id,name from public.access_groups WHERE id in (SELECT access_group_id from public.user_access where user_id='".intval($user_id)."')";
+						$result = pg_query($this->dbconn, $sql);
+
+						while ($row = pg_fetch_assoc($result)) {
+							$rv[$row['id']] = $row['name'];
+						}
+            return $rv;
+        }
 
 				function getAccessGroupsArr(){
 						$rv = array();
@@ -99,7 +121,19 @@
 						}
             return $rv;
         }
+				
+				function getGroupMapGroups($gids){
+						$rv = array();
 
+						$sql = "select id,name from public.map WHERE id in (SELECT map_id from public.map_access where access_group_id IN (".implode(',', $gids)."))";
+						$result = pg_query($this->dbconn, $sql);
+
+						while ($row = pg_fetch_assoc($result)) {
+							$rv[$row['id']] = $row['name'];
+						}
+            return $rv;
+        }
+				
         function getGroupById($id){
             $sql ="select * from public." .$this->table_name . " where id='".intval($id)."'";
             return pg_query($this->dbconn, $sql);

@@ -4,6 +4,9 @@
     require('class/database.php');
 		require('class/schedule.php');
 		require('class/datasource.php');
+		require('class/scheduleR.php');
+		require('class/map.php');
+		require('class/cron.php');
     require('incl/jru-lib.php');
 		
 		if(!isset($_SESSION[SESS_USR_KEY]) || !in_array($_SESSION[SESS_USR_KEY]->accesslevel, ADMINISTRATION_ACCESS) ){
@@ -12,19 +15,32 @@
     }
 
 		$schedules = array();
-		$opt_rep_id = array();
 		$datasources = array();
 		$eml_tmpls = array();
 		
 		$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
+		$dbconn = $database->getConn();
+		
+		if(empty($_GET['tab']) || ($_GET['tab'] == 'jri')){
+			$_GET['tab'] = 'jri';
+			$sch_obj = new schedule_Class($dbconn);
+			$schedules = $sch_obj->getArr();
+				
+			$ds_obj = new datasource_Class($dbconn);
+			$datasources = $ds_obj->getArr();
+			
+			$action = 'schedule';
 
-		$sch_obj = new schedule_Class($database->getConn());
-		$schedules = $sch_obj->getArr();
+		}else if($_GET['tab'] == 'R'){
+			$sch_obj = new scheduleR_Class($dbconn);
+			$schedules = $sch_obj->getArr();
 			
-		$ds_obj = new datasource_Class($database->getConn());
-		$datasources = $ds_obj->getArr();
+			$maps_obj = new map_Class($dbconn, $_SESSION[SESS_USR_KEY]->id);
+			$maps = $maps_obj->getArr();
 			
-		$opt_rep_id = get_all_rep_ids();
+			$action = 'scheduleR';
+		}
+			
 		$eml_tmpls = get_email_templates();
 		array_unshift($eml_tmpls, '');
 ?>
@@ -44,11 +60,11 @@
 						// Delete row on delete button click
 						$(document).on("click", ".delete", function() {
 						    var obj = $(this);
-						    var data = {'delete': true, 'schid': obj.parents("tr").attr('data-id')};
+						    var data = {'delete': true, 'id': obj.parents("tr").attr('data-id')};
 
 						    $.ajax({
                     type: "POST",
-                    url: 'action/schedule.php',
+                    url: 'action/<?=$action?>.php',
                     data: data,
                     dataType:"json",
                     success: function(response){
@@ -86,50 +102,78 @@
                     </div>
 										<div class="col-6">
                         <div class="text-end upgrade-btn">
-													<a href="edit_schedule.php" class="btn btn-primary text-white add-new" role="button" aria-pressed="true"><i class="fa fa-plus"></i> Add Schedule</a>
+													<a href="edit_<?=$action?>.php" class="btn btn-primary text-white add-new" role="button" aria-pressed="true"><i class="fa fa-plus"></i> Add Schedule</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="container-fluid">
-
+      <div class="container-fluid">
+				<ul class="nav nav-tabs">
+					<li class="nav-item"><a class="nav-link <?php if($_GET['tab'] == 'jri') { ?> active <?php } ?>" href="schedules.php?tab=jri">JRI</a> </li>
+					<li class="nav-item"><a class="nav-link <?php if($_GET['tab'] == 'R') { ?> active <?php } ?>" href="schedules.php?tab=R">R</a> </li>
+				</ul>
+				
 				<table class="table table-bordered custom-table" id="sortTable">
 					<thead>
 						<tr>
-							<!-- <th data-name="id" data-editable='false'>#</th> -->
 							<th data-name="cron_period" data-type='select'>Cron</th>
+
+							
+						<?php if($_GET['tab'] == 'jri') { ?>
+							<!-- <th data-name="id" data-editable='false'>#</th> -->
 							<th data-name="name"		data-type='select'>Name</th>
-							<th data-name="format"	data-type='select'>Format</th>
 							<th data-name="datasource" data-type='select'>Datasource</th>
 							<th data-name="filename">Output</th>
-							<th data-name="email">Email</th>
-							<th data-name="email_subj">Email Subj.</th>
-							<th data-name="email_body" data-type='textarea'>Email Body</th>
-							<th data-name="email_tmpl" data-type='select'>Email Templ.</th>
-							<th data-name="url_opt_params">Optional</th>
-							<th data-editable='false' data-action='true'>Actions</th>
+						<?php } else { ?>
+							<th data-name="rmap_id" data-type='select'>R map</th>
+							<th data-name="rmd_source" data-type='select'>Rmd Source</th>
+						<?php } ?>
+						<th data-name="format"	data-type='select'>Format</th>
+
+						<th data-name="email">Email</th>
+						<th data-name="email_subj">Email Subj.</th>
+						<th data-name="email_body" data-type='textarea'>Email Body</th>
+						<th data-name="email_tmpl" data-type='select'>Email Templ.</th>
+						<?php if($_GET['tab'] == 'jri') { ?>
+						<th data-name="url_opt_params">Optional</th>
+						<?php } ?>
+						<th data-editable='false' data-action='true'>Actions</th>
 						</tr>
 					</thead>
 
-					<tbody> <?php foreach ($schedules as $schid => $sched) {?> <tr data-id="<?=$schid?>" align="left">
+					<tbody> <?php
+							foreach ($schedules as $schid => $sched) { ?> <tr data-id="<?=$schid?>" align="left">
 						<!-- <td><?=$schid?></td> -->
+						
+						<?php if($_GET['tab'] == 'R') {
+							$cron = CRON::get($sched['rmap_id']);
+							$sched['cron_period'] =  $cron['cron_period'];
+						} ?>	
+						
 						<td data-type="select" data-value="<?=$sched['cron_period']?>"><?=$sched['cron_period']?></td>
-						<td data-type="select" data-value="<?=$sched['name']?>"><?=$sched['name']?></td>
-						<td data-type="select" data-value="<?=$sched['format']?>"><?=$sched['format']?></td>
+						<?php if($_GET['tab'] == 'jri') { ?>
+							<td data-type="select" data-value="<?=$sched['name']?>"><?=$sched['name']?></td>
 						<td data-type="select" data-value="<?=$sched['datasource_id']?>"><?=$datasources[$sched['datasource_id']]['name']?></td>
 						<td><?=$sched['filename']?></td>
+						<?php } else { ?>
+						<td data-type="select" data-value="<?=$sched['rmap_id']?>"><?=$maps[$sched['rmap_id']]['name']?></td>
+						<td data-type="select" data-value="<?=$sched['rmd_source']?>"><?=$sched['rmd_source']?></td>
+						<?php } ?>
+						<td data-type="select" data-value="<?=$sched['format']?>"><?=$sched['format']?></td>
 						<td><?=$sched['email']?></td>
 						<td><?=$sched['email_subj']?></td>
 						<td data-type="textarea" data-value="<?=$sched['email_body']?>"><?=$sched['email_body']?></td>
 						<td data-type="select" 	 data-value="<?=$sched['email_tmpl']?>"><?=$sched['email_tmpl']?></td>
+						<?php if($_GET['tab'] == 'jri') { ?>
 						<td><?=htmlspecialchars($sched['url_opt_params'])?></td>
+						<?php } ?>
 						<td>
-							<a href="edit_schedule.php?schid=<?=$schid?>" class="edit" 	title="Edit"	 data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+							<a href="edit_<?=$action?>.php?id=<?=$schid?>" class="edit" 	title="Edit"	 data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
 							<a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
 						</td>
 					</tr>
-				<?php }?>
+				<?php } ?>
 					</tbody>
 				</table>
             </div>

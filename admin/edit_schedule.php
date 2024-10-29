@@ -28,14 +28,14 @@
 		$eml_tmpls = get_email_templates();
 		array_unshift($eml_tmpls, '');
 				
-		if(!empty($_GET['schid'])){
-			$sched = $sch_obj->getById($_GET['schid']);
+		if(!empty($_GET['id'])){
+			$sched = $sch_obj->getById($_GET['id']);
 				
 			if($sched){
 				if(str_starts_with($sched['cron_period'], '@')){
 					$sched['cron_period'] = substr($sched['cron_period'], 1);
 				}else if($sched['cron_period'] == 'custom'){
-					$sched['cron_custom'] = get_jri_cron_custom($_GET['schid']);
+					$sched['cron_custom'] = get_jri_cron_custom($_GET['id']);
 				}
 			}else{
 				$_GET['error'] = 'Error: No such schedule!';
@@ -49,7 +49,7 @@
 	<?php include("incl/meta.php"); ?>
 	<link href="dist/css/table.css" rel="stylesheet">
 		<script type="text/javascript">
-			var schid = <?= (isset($_GET['schid'])) ? $_GET['schid'] : 0?>;
+			var schid = <?= (isset($_GET['id'])) ? $_GET['id'] : 0?>;
 function clear_disable_obj(name){
 	var Obj = document.getElementsByName(name)[0];
 	Obj.disabled = !Obj.disabled;
@@ -155,8 +155,8 @@ function update_nomail(){
                     <div class="col-6">
                         <nav aria-label="breadcrumb">
                         </nav>
-												<?php if(isset($_GET['schid'])){ ?>
-													<h1 class="mb-0 fw-bold">Update schedule <?=$_GET['schid']?></h1>
+												<?php if(isset($_GET['id'])){ ?>
+													<h1 class="mb-0 fw-bold">Update schedule <?=$_GET['id']?></h1>
 												<?php } else { ?>
                         	<h1 class="mb-0 fw-bold">Add new schedule</h1>
 												<?php } ?>
@@ -177,8 +177,8 @@ function update_nomail(){
 										  </div>
 										  <?php } ?>
 
-									<?php if(isset($_GET['schid'])){ ?>
-										<input type="hidden" class="form-control" name="schid" id="schid" value="<?=$_GET['schid']?>" />
+									<?php if(isset($_GET['id'])){ ?>
+										<input type="hidden" class="form-control" name="id" id="id" value="<?=$_GET['id']?>" />
 									<?php } ?>
 
 									<div class="form-group">
@@ -276,12 +276,12 @@ function update_nomail(){
 										</div>
 									</fieldset>
 									
-									<button type="submit" class="btn btn-primary" id="btn_submit"><?php if(isset($_GET['schid'])){ ?>Update<?php } else { ?>Create<?php } ?></button>
+									<button type="submit" class="btn btn-primary" id="btn_submit"><?php if(isset($_GET['id'])){ ?>Update<?php } else { ?>Create<?php } ?></button>
 				      </div>
 							</form>
             </div>
             
-						<footer class="footer text-center">
+						<footer class="footer text-center" style="background-color:gainsboro">
             </footer>
         </div>
     </div>

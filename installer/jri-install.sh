@@ -341,7 +341,11 @@ CAT_EOF
 		sed -i.save '/<\/VirtualHost>/iInclude /etc/apache2/conf-available/jri.conf' /etc/apache2/sites-available/000-default-le-ssl.conf
 	fi
 	
-	systemctl restart apache2
+	PHP_VER=$(php -version | head -n 1 | cut -f2 -d' ' | cut -f1,2 -d.)
+	systemctl restart apache2 php${PHP_VER}-fpm
+	
+	# add rmaps user for cron updates
+	useradd -s /usr/sbin/nologin -M -d /var/www -G www-data,tomcat rmaps
 }
 
 touch /root/auth.txt

@@ -16,36 +16,51 @@ It supports PostgreSQL, Oracle, MySQL, and MSSQL and you can add additional data
 
 Jasper Report Publisher is free, Open Source software built around [JasperReportsIntegration](https://github.com/daust/JasperReportsIntegration)/). 
 
-![Jasper Report Publisher](docs/_static/jasper-report-publisher-github-page.png)
+## Features
 
-![Jasper Report Publisher](docs/_static/bee-report.png)
+#### On Demand Reports for End Users with Group Level Permissions
+
+![Jasper Report Publisher](docs/_static/Jasper-Report-Publisher-README.png)
+
+
+#### Schedule, Email, and run Reports On Demand:
+
+![Jasper Report Publisher](docs/_static/simple-bee-report.png)
+
+
+#### Support for RPlotly and R Markdown Reports
+
+![Jasper Report Publisher](docs/_static/R-animated.png)
+
+
+#### Support for QGIS maps via QuartzMap
+
+![Jasper Report Publisher](docs/_static/qgis-maps.png)
 
 
 ## Install
-Install on Ubuntu 22
+Install on Ubuntu 24
 
 Installation is done via the install scripts located in the /installer directory.
 
 System Requirements
 =======================
-* PostgreSQL 16
+* PostgreSQL 16 or 17
 * PHP >= 8.1
-* 2 GB RAM
-* 5 GB Disk
-* Tested on Ubuntu 22 and Ubuntu 24
+* 4 GB RAM
+* 15 GB Disk
 
 Running the Installer
 =======================
 
-Clone or download the repoistory::
+Download Latest Release::
 
-    git clone https://github.com/AcuGIS/Jasper-Publisher    
+    jasper-report-publisher-3.0.1.zip
 
-Navigate to /JasperPublisher and make the installation scripts executable::
+Unzip and changed to jasper-report-publisher-3.0.1 directory
 
-
-      cd Jasper-Publisher
-      chmod +x installer/postgres.sh installer/app-install.sh installer/jri-install.sh installer/jri-sample.sh
+    Unzip -q jasper-report-publisher-3.0.1.zip
+    cd jasper-report-publisher-3.0.1    
 
 Run the installers::
 
@@ -54,10 +69,6 @@ Run the installers::
      ./installer/jri-install.sh
      ./installer/jri-sample.sh
 
-
-Note: if you get Permission denied, make the scripts executable:
-
-     
 
 Optionally, run below to provision SSL using letsencrypt::
 

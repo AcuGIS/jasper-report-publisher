@@ -1,5 +1,5 @@
 *******
-Maps
+QGIS Maps
 *******
 
 .. note::

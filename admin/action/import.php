@@ -158,7 +158,7 @@
 				//$dbname = pathinfo($name, PATHINFO_FILENAME);
 				
 				if(($ext == 'gpkg') || ($ext == 'shp')){
-					$cmd = "ogr2ogr -preserve_fid -f 'PostgreSQL' PG:\"dbname=".$dbname." user=".$dbuser."\" '".$fpath."'";
+					$cmd = "ogr2ogr -preserve_fid -lco precision=NO -nlt PROMOTE_TO_MULTI -f 'PostgreSQL' PG:\"dbname=".$dbname." user=".$dbuser."\" '".$fpath."'";
 				
 				}else if($ext == 'dump'){
 					$cmd = 'pg_restore -U '.$dbuser.' -d '.$dbname.' -Fc '.$fpath;

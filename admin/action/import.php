@@ -112,7 +112,7 @@
 		}
 		
 		// make new db postgis
-		$imp_db = new Database(DB_HOST, $dbname, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
+		$imp_db = new Database(DB_HOST, $dbname, $dbuser, $dbpass, DB_PORT, DB_SCMA);
 		if(!$imp_db->is_connected()){
 			echo 'Error: Failed to connect to '.$dbname;
 			die();

@@ -54,7 +54,7 @@
 			$(document).ready(function() {
 						
 						$('[data-toggle="tooltip"]').tooltip();
-						<?php if($tab == 'datasource'){ ?>
+						<?php if($tab == 'ds'){ ?>
 							var actions = `
 							<a class="add" title="Add" data-toggle="tooltip">
 								<i class="material-icons">&#xE03B;</i>

@@ -1,90 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 6.2.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="quartz-demo" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71faaff3-3767-4e20-b8f6-76819a9aa267">
-	<queryString language="SQL">
-		<![CDATA[select  apiary.bee_species,  SUM(CAST(apiary.bee_amount as INTEGER)) from  apiary GROUP BY apiary.bee_species]]>
-	</queryString>
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="quartz-demo" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71faaff3-3767-4e20-b8f6-76819a9aa267">
+	<query language="SQL"><![CDATA[select  apiary.bee_species,  SUM(CAST(apiary.bee_amount as INTEGER)) from  apiary GROUP BY apiary.bee_species]]></query>
 	<field name="bee_species" class="java.lang.String"/>
 	<field name="sum" class="java.lang.Long"/>
 	<group name="Group1">
-		<groupExpression><![CDATA[$F{bee_species}]]></groupExpression>
+		<expression><![CDATA[$F{bee_species}]]></expression>
 		<groupHeader>
 			<band height="33">
-				<textField>
-					<reportElement mode="Opaque" x="0" y="0" width="555" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="73728003-80e8-4900-9415-a1355771b690"/>
-					<textElement>
-						<font size="24" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{bee_species}]]></textFieldExpression>
-				</textField>
+				<element kind="textField" uuid="73728003-80e8-4900-9415-a1355771b690" mode="Opaque" x="0" y="0" width="555" height="32" forecolor="#006699" backcolor="#E6E6E6" fontSize="24.0" bold="true">
+					<expression><![CDATA[$F{bee_species}]]></expression>
+				</element>
 			</band>
 		</groupHeader>
 		<groupFooter>
 			<band/>
 		</groupFooter>
 	</group>
-	<background>
-		<band/>
-	</background>
-	<title>
-		<band height="72">
-			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="a0b87539-7e52-4165-a2c6-24d68cda661b"/>
-				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="07883481-2fc7-4309-8348-216b42ebde68"/>
-					<textElement>
-						<font size="34" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Bee Species]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="1050564b-68ef-4492-ba4f-9011e4b592fb"/>
-					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Jasper Demo Report]]></text>
-				</staticText>
-			</frame>
-		</band>
+	<background/>
+	<title height="72">
+		<element kind="frame" uuid="a0b87539-7e52-4165-a2c6-24d68cda661b" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699">
+			<element kind="staticText" uuid="07883481-2fc7-4309-8348-216b42ebde68" x="20" y="20" width="234" height="43" forecolor="#FFFFFF" fontSize="34.0" bold="true">
+				<text><![CDATA[Bee Species]]></text>
+			</element>
+			<element kind="staticText" uuid="1050564b-68ef-4492-ba4f-9011e4b592fb" x="395" y="43" width="180" height="20" forecolor="#FFFFFF" fontSize="14.0" bold="false" hTextAlign="Right">
+				<text><![CDATA[Jasper Demo Report]]></text>
+			</element>
+		</element>
 	</title>
-	<pageHeader>
-		<band height="13"/>
-	</pageHeader>
+	<pageHeader height="13"/>
 	<detail>
 		<band height="37">
-			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="1" width="555" height="29" uuid="3c26d9ce-faa4-48c7-a994-fec6fb39a7f8"/>
-				<textElement>
-					<font size="18"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
-			</textField>
+			<element kind="textField" uuid="3c26d9ce-faa4-48c7-a994-fec6fb39a7f8" x="0" y="1" width="555" height="29" fontSize="18.0" textAdjust="StretchHeight">
+				<expression><![CDATA[$F{sum}]]></expression>
+			</element>
 		</band>
 	</detail>
-	<columnFooter>
-		<band/>
-	</columnFooter>
-	<pageFooter>
-		<band height="17"/>
-	</pageFooter>
-	<summary>
-		<band height="217">
-			<pie3DChart>
-				<chart evaluationTime="Report">
-					<reportElement x="0" y="17" width="555" height="200" uuid="3c63b471-5eca-4550-bcaf-895bc980c336"/>
-					<chartTitle/>
-					<chartSubtitle/>
-					<chartLegend/>
-				</chart>
-				<pieDataset>
+	<columnFooter/>
+	<pageFooter height="17"/>
+	<summary height="217">
+		<element kind="chart" chartType="pie3D" uuid="3c63b471-5eca-4550-bcaf-895bc980c336" x="0" y="17" width="555" height="200" evaluationTime="Report">
+			<dataset kind="pie">
+				<series>
 					<keyExpression><![CDATA[$F{bee_species}]]></keyExpression>
 					<valueExpression><![CDATA[$F{sum}]]></valueExpression>
-				</pieDataset>
-				<pie3DPlot>
-					<plot/>
-					<itemLabel/>
-				</pie3DPlot>
-			</pie3DChart>
-		</band>
+				</series>
+			</dataset>
+			<plot>
+				<itemLabel/>
+			</plot>
+		</element>
 	</summary>
 </jasperReport>

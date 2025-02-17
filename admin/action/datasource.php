@@ -31,7 +31,8 @@
 			
 			list($elem) = $xml->xpath('/x:web-app/x:resource-ref/x:res-ref-name[text() = "'.$name.'"]');
 			if($elem){
-				unset($elem[0]);
+			    $dom = dom_import_simplexml($elem);
+                $dom->parentNode->remove();
 				$xml->asXML($filename);
 			}
 		}

@@ -35,7 +35,7 @@
 						var obj = $(this);
 						var schid = obj.parents("tr").attr('data-id');
 
-						$.get('action/reporting.php?out=txt&schid=' + schid).done(function( data ) {
+						$.get('action/reporting.php?out=txt&id=' + schid).done(function( data ) {
 							$('#run_output').show();
 						  $( "#run_output" ).html( data );
 						});

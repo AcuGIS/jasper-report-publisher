@@ -59,12 +59,11 @@ Running the Installer
 
 Download Latest Release::
 
-    jasper-report-publisher-3.0.1.zip
+    git clone https://github.com/AcuGIS/jasper-report-publisher.git
 
-Unzip and changed to jasper-report-publisher-3.0.1 directory
+change to the jasper-report-publisher directory
 
-    Unzip -q jasper-report-publisher-3.0.1.zip
-    cd jasper-report-publisher-3.0.1    
+    cd jasper-report-publisher   
 
 Run the installers::
 

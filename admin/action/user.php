@@ -11,28 +11,45 @@
 	    $obj = new user_Class($database->getConn());
 			$id = empty($_POST['id']) ? 0 : intval($_POST['id']);
 			
-				if(isset($_POST['save']) && ($id > 0)) {	// only updates
+				if(isset($_POST['save'])){
+				
+				    if($id > 0) {	// only updates
 					
-					$newId = $obj->update($_POST);
-					if($newId > 0){
-						if($_POST['accesslevel'] == 'Admin'){
-							
-							$result = $obj->getById($id);
-							$row = pg_fetch_assoc($result);
-							pg_free_result($result);
-							
-							user_Class::update_ftp_user($row['ftp_user'], $row['password']);
-						}
-						$result = ['success' => true, 'message' => 'User Successfully Updated!', 'id' => $newId];
-					}else{
-						$result = ['success' => false, 'message' => 'Failed to update user!'];
+    					$newId = $obj->update($_POST);
+    					if($newId > 0){
+    						if($_POST['accesslevel'] == 'Admin'){
+    							
+    							$result = $obj->getById($id);
+    							$row = pg_fetch_assoc($result);
+    							pg_free_result($result);
+    							
+    							user_Class::update_ftp_user($row['ftp_user'], $row['password']);
+    						}
+    						$result = ['success' => true, 'message' => 'User Successfully Updated!', 'id' => $newId];
+    					}else{
+    						$result = ['success' => false, 'message' => 'Failed to update user!'];
+    					}
+					}else{                    
+                        $email_user = explode('@', $_POST['email'])[0];
+                        $_POST['ftp_user'] = user_Class::uniqueName($email_user);
+                        $_POST['pg_password'] = user_Class::randomPassword();
+                    
+        				$newId = $obj->create($_POST);
+        				if($newId > 0){
+                            user_Class::create_ftp_user($_POST['ftp_user'], $_POST['email'], $_POST['password']);
+        				    $database->create_user($_POST['ftp_user'], $_POST['pg_password']);
+
+           					$result = ['success' => true, 'message' => 'User Successfully Created!', 'id' => $newId];
+        				}else{
+       					    $result = ['success' => false, 'message' => 'Failed to update user!'];
+        				}
 					}
         
 				} else if(isset($_POST['delete']) && ($id != SUPER_ADMIN_ID)) {
 
 					$ref_ids = array();
 					$ref_name = null;
-					$tbls = array('user', 'map', 'access_groups', 'permalink');
+					$tbls = array('pglink', 'gslink');
 					
 					foreach($tbls as $k){
 						$rows = $database->getAll('public.'.$k, 'owner_id = '.$id);							

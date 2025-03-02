@@ -30,7 +30,7 @@
 	
 						$ref_ids = array();
 						$ref_name = null;
-						$acc_tbls = array('user', 'link', 'group', 'report');
+						$acc_tbls = array('map', 'user', 'link', 'group', 'report');
 						
 						foreach($acc_tbls as $k){
 							$rows = $database->getAll($k.'_access', 'access_group_id = '.$id);							

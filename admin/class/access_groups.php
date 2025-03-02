@@ -150,7 +150,11 @@
 
        function update($data=array()) {
           $sql = "update public.access_groups set name='".$this->cleanData($data['name'])."' where id = '".intval($data['id'])."' ";
-          $rv = pg_affected_rows(pg_query($this->dbconn, $sql));
+          $result = pg_query($this->dbconn, $sql);
+          if(!$result){
+              return false;
+          }
+          $rv = pg_affected_rows($result);
 
 					if($rv > 0){
 
@@ -166,7 +170,9 @@
 
 						$sql = "insert into public.user_access (user_id,access_group_id) values ".implode(',', $values);
 						$ret = pg_query($this->dbconn, $sql);
+						return true;
 					}
+			return false;
        }
 
        function cleanData($val)

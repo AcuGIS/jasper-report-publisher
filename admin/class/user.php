@@ -134,9 +134,7 @@
           $id = intval($data['id']);
 				 	$row = pg_fetch_object($this->getById($id));
 					
-          $sql = "update public.user set name='".
-          				$this->cleanData($data['name'])."', email='".
-									$this->cleanData($data['email'])."'";
+          $sql = "update public.user set name='".$this->cleanData($data['name'])."'";
 					
 					if($row->password != $data['password']){	# if password is changed
 						$hashpassword = password_hash($data['password'], PASSWORD_DEFAULT);

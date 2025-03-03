@@ -109,12 +109,15 @@
 								data['id'] = $(this).closest('tr').attr('data-id');
 
 								input.each(function() {
-									if($(this).closest('td').attr('data-type') == 'select') {
-											var val = $(this).find('option:selected').text();
-											$(this).parent("td").attr('data-value', $(this).val());
-											$(this).parent("td").html(val);
+									let td = $(this).closest('td');
+									if(td.attr('data-type') == 'select') {
+											var val = $(this).find('option:selected').toArray().map(item => item.text).join(',');
+											td.attr('data-value', $(this).val());
+											td.html(val);
+									}else if($(this).attr('data-name') == 'password') {
+									       td.html('********');
 									}else {
-											$(this).parent("td").html($(this).val());
+											td.html($(this).val());
 									}
 
 									data[$(this).attr('name')] = $(this).val();
@@ -127,8 +130,9 @@
                                     dataType:"json",
                                     success: function(response){
                                         if(response.id) { // means, new record is added
-                                            obj.closest('table').find('tr:last-child').attr('data-id', response.id);
-                                            obj.closest('table').find('tr:last-child td:first-child').text(response.id)
+					    obj.closest('tr').attr('data-id', response.id);
+                                            obj.closest('tr').find('td:first-child').text(response.id);
+                                            obj.closest('tr').find('td').eq(3).text(response.password);
                                         }
                                         alert(response.message)
                                     }
@@ -176,7 +180,7 @@
 															$(this).find('[name='+name+']').val(val);
 														
 														}else if(name == 'password'){
-															$(this).html(' <td> <input type="password" class="form-control" name="'+ name +'" value="' + $(this).text() + '"> </td>');
+															$(this).html(' <input type="password" class="form-control" data-name="password" name="'+ name +'" value="' + $(this).text() + '"> ');
 															
 														}	else {
         											$(this).html(' <input type = "text" name="'+ name +'" class = "form-control" value = "' + $(this).text() + '" > ');

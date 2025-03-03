@@ -17,15 +17,16 @@
 					
     					$newId = $obj->update($_POST);
     					if($newId > 0){
+    							
+         				    $result = $obj->getById($id);
+    						$row = pg_fetch_assoc($result);
+    						pg_free_result($result);
+    							
     						if($_POST['accesslevel'] == 'Admin'){
-    							
-    							$result = $obj->getById($id);
-    							$row = pg_fetch_assoc($result);
-    							pg_free_result($result);
-    							
     							user_Class::update_ftp_user($row['ftp_user'], $row['password']);
     						}
-    						$result = ['success' => true, 'message' => 'User Successfully Updated!', 'id' => $newId];
+    						$result = ['success' => true, 'message' => 'User Successfully Updated!',
+                                'id' => $id, 'password' => $row['password'] ];
     					}else{
     						$result = ['success' => false, 'message' => 'Failed to update user!'];
     					}

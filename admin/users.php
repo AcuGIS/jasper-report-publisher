@@ -29,6 +29,11 @@
 <head>
 	<?php include("incl/meta.php"); ?>
 	<link href="dist/css/table.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
+	<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
+
+	<link href="dist/css/table.css" rel="stylesheet">
 		<script type="text/javascript">
 			$(document).ready(function() {
 						$('[data-toggle="tooltip"]').tooltip();
@@ -130,7 +135,7 @@
                                     dataType:"json",
                                     success: function(response){
                                         if(response.id) { // means, new record is added
-					    obj.closest('tr').attr('data-id', response.id);
+                                            obj.closest('tr').attr('data-id', response.id);
                                             obj.closest('tr').find('td:first-child').text(response.id);
                                             obj.closest('tr').find('td').eq(3).text(response.password);
                                         }
@@ -354,7 +359,7 @@ table td:nth-child(1)
             
             <div class="container-fluid">
 
-				<table class="table table-bordered custom-table">
+				<table class="table custom-table" id="sortTable">
 					<thead>
 						<tr>
 							<th data-name="id" data-editable='false'>ID</th>
@@ -409,7 +414,7 @@ table td:nth-child(1)
 			  
     </div>      
   </div>
-
+    <script>new DataTable('#sortTable', { paging: false });</script>
     <!--Menu sidebar -->
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->

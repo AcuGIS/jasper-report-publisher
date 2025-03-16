@@ -140,7 +140,12 @@
 						$hashpassword = password_hash($data['password'], PASSWORD_DEFAULT);
           	$sql .= ", password='".$hashpassword."'";
 					}
-
+			if(isset($data['ftp_user'])){
+		      $sql .= ", ftp_user='".$this->cleanData($data['ftp_user'])."'";
+			}
+			if(isset($data['pg_password'])){
+		      $sql .= ", pg_password='".$this->cleanData($data['pg_password'])."'";
+			}
           $sql .= ", accesslevel='".$this->cleanData($data['accesslevel']).
 								 	"' where id = '".$id."'";
 
@@ -204,6 +209,28 @@
 			 if (is_resource($process)) {
 				 
 					 fwrite($pipes[0], $ftp_user."\n".$hashed_pwd."\n");
+					 fclose($pipes[0]);
+
+					 //echo stream_get_contents($pipes[1]);
+					 fclose($pipes[1]);
+					 fclose($pipes[2]);
+
+					 // It is important that you close any pipes before calling proc_close in order to avoid a deadlock
+					 $return_value = proc_close($process);
+			 }
+		 }
+			static public function delete_ftp_user($ftp_user){
+			 $descriptorspec = array(
+				 0 => array("pipe", "r"),
+				 1 => array("pipe", "w"),
+				 2 => array("pipe", "w")
+			 );
+
+			 $process = proc_open('sudo /usr/local/bin/delete_ftp_user.sh', $descriptorspec, $pipes, null, null);
+			 
+			 if (is_resource($process)) {
+				 
+					 fwrite($pipes[0], $ftp_user."\n");
 					 fclose($pipes[0]);
 
 					 //echo stream_get_contents($pipes[1]);

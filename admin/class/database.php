@@ -195,6 +195,16 @@
 					return true;
 				}
 				
+				function drop_user($dbuser) {
+					$sql = 'DROP USER "'.$dbuser.'"';
+					$result = pg_query($this->connection, $sql);
+					if (!$result) {
+						return false;
+					}
+					pg_free_result($result);
+					return true;
+				}
+				
 				function create_user_db($dbname, $dbuser, $pass) {
 					
 					$sqls = array('CREATE DATABASE "'.$dbname.'" WITH OWNER "'.$dbuser.'"',

@@ -14,31 +14,59 @@
 				if(isset($_POST['save'])){
 				
 				    if($id > 0) {	// only updates
-					
-    					$newId = $obj->update($_POST);
-    					if($newId > 0){
-    							
-         				    $result = $obj->getById($id);
-    						$row = pg_fetch_assoc($result);
-    						pg_free_result($result);
-    							
+				        $result = $obj->getById($id);
+    					$old_row = pg_fetch_assoc($result);
+    					pg_free_result($result);
+            
+                        if($_POST['accesslevel'] != $old_row['accesslevel']){  // if user changes roles
+                            if($_POST['accesslevel'] == 'Admin'){   // becomes admin
+                                $email_user = explode('@', $old_row['email'])[0];
+                                $_POST['ftp_user']    = user_Class::uniqueName($email_user);
+                                $_POST['pg_password'] = user_Class::randomPassword();
+                            }else if($old_row['accesslevel'] == 'Admin'){ // drops admin
+                                user_Class::delete_ftp_user($old_row['ftp_user']);
+                                $database->drop_user($old_row['ftp_user']);
+                                $_POST['ftp_user'] = $_POST['pg_password'] = '';
+                            }
+                        }
+                        
+    					if($obj->update($_POST) > 0){
+                            $result = $obj->getById($id);
+                            $row = pg_fetch_assoc($result);
+                            pg_free_result($result);
+                            
     						if($_POST['accesslevel'] == 'Admin'){
-    							user_Class::update_ftp_user($row['ftp_user'], $row['password']);
+                                if(empty($old_row['ftp_user'])){    //if user wasn't admin
+                                    user_Class::create_ftp_user($row['ftp_user'], $row['email'], $row['password']);
+                    				$database->create_user($row['ftp_user'], $row['pg_password']);
+                                }else if($old_row['password'] != $row['password']){ //if password is changed
+                                    user_Class::update_ftp_user($row['ftp_user'], $row['password']);
+                                }
     						}
     						$result = ['success' => true, 'message' => 'User Successfully Updated!',
                                 'id' => $id, 'password' => $row['password'] ];
     					}else{
     						$result = ['success' => false, 'message' => 'Failed to update user!'];
     					}
-					}else{                    
-                        $email_user = explode('@', $_POST['email'])[0];
-                        $_POST['ftp_user'] = user_Class::uniqueName($email_user);
-                        $_POST['pg_password'] = user_Class::randomPassword();
+					}else{
+					    if($_POST['accesslevel'] == 'Admin'){
+                            $email_user = explode('@', $_POST['email'])[0];
+                            $_POST['ftp_user'] = user_Class::uniqueName($email_user);
+                            $_POST['pg_password'] = user_Class::randomPassword();
+						}else{
+						  $_POST['ftp_user'] = $_POST['pg_password'] = '';
+						}
                     
         				$newId = $obj->create($_POST);
         				if($newId > 0){
-                            user_Class::create_ftp_user($_POST['ftp_user'], $_POST['email'], $_POST['password']);
-        				    $database->create_user($_POST['ftp_user'], $_POST['pg_password']);
+                            if($_POST['accesslevel'] == 'Admin'){
+                                $result = $obj->getById($newId);
+                                $row = pg_fetch_assoc($result);
+                                pg_free_result($result);
+                                
+                                user_Class::create_ftp_user($_POST['ftp_user'], $_POST['email'], $row['password']);
+                        	    $database->create_user($_POST['ftp_user'], $_POST['pg_password']);
+                            }
 
            					$result = ['success' => true, 'message' => 'User Successfully Created!', 'id' => $newId];
         				}else{
@@ -75,6 +103,7 @@
 	          $ret_val = $obj->delete($id);
 						if($ret_val){
 							shell_exec('sudo /usr/local/bin/delete_ftp_user.sh '.$row['ftp_user']);
+							$database->drop_user($row['ftp_user']);
 						}
 	          $result = ['success' => $ret_val, 'message' => 'Data Successfully Deleted!'];
 					}

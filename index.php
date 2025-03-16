@@ -32,6 +32,7 @@
 		$group_rows = array();
 		$rows1 = array();
 		$rows2 = array();
+		$rows3 = array();
 		
 		if(count($usr_grps)){
 			$usr_grps_keys = array_keys($usr_grps);

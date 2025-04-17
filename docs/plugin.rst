@@ -14,14 +14,16 @@ In QGIS, go to Plugins > Manage and Install Plugins and click on "Install from Z
 
 Once installed, you should see the Plugins menu.
   
-Begin by selecting 
-
-  
+Begin by selecting   
 
 .. image:: plugin-1.png
 
+Begin by selecting 
+
 
 .. image:: servers.png
+
+Begin by selecting 
 
 .. image:: Upload.png
 

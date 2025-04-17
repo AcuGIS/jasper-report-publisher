@@ -13,6 +13,9 @@ In QGIS, go to Plugins > Manage and Install Plugins and click on "Install from Z
 .. image:: install.png
 
 Once installed, you should see the Plugins menu.
+
+Usage
+==================
   
 Begin by selecting Configure SFTP servers:  
 

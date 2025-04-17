@@ -20,6 +20,11 @@ Begin by selecting
 
 .. image:: plugin-1.png
 
+
+.. image:: servers.png
+
+.. image:: Upload.png
+
 .. note::
     The file browser location is set to /home/tomcat/apache-tomcat-v/jasper_reports/reports
     

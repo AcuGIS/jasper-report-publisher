@@ -10,7 +10,9 @@ Download acugis_sftp_tool.zip to your desktop
 
 In QGIS, go to Plugins > Manage and Install Plugins and click on "Install from Zip" in left menu.
 
-.. image:: install.png
+Browse to location where you saved acugis_sftp_tool.zip and then click "Install Plugin"
+
+.. image:: install-1.png
 
 Once installed, you should see the Plugins menu.
 

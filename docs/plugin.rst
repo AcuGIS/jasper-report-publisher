@@ -14,40 +14,36 @@ In QGIS, go to Plugins > Manage and Install Plugins and click on "Install from Z
 
 Once installed, you should see the Plugins menu.
   
-Begin by selecting   
+Begin by selecting Configure SFTP servers:  
 
 .. image:: plugin-1.png
 
-Begin by selecting 
+Click Add to add server(s).
 
+.. image:: ConfigServers.png
 
-.. image:: servers.png
+Click Save.
 
-Begin by selecting 
+Go to Upload Project Directory via SFTP
+
+.. image:: sftp.png
+
+Select the Server you wish to upload to.  Also select the Remote Location (file path) to upload to (e.g. /var/www/html)
+
+If your owner is a user:group other than wwww-data, change it in the Owbership field.
+
+.. warning::
+    The entire QGIS Project directory will be uploaded.
+
+Click Upload
 
 .. image:: Upload.png
 
 .. note::
-    The file browser location is set to /home/tomcat/apache-tomcat-v/jasper_reports/reports
+    If files exist, you will prompted if you wish to overwrite files.
     
-Select the directory you wish to publish to and then select Upload to upload both your .jrxml and .jasper files.
+A success message will be displayed up completion.
 
-You would also include any support files, such as image files.
 
-Creating Directories
-====================
 
-You can create directories via::
 
-    /home/tomcat/tomcat-version/jasper-reports/reports
-
-Options
-=======
-
-There are two options for uploading files. 
-
-1. Upload the files individually
-
-2. Uploaded Zipped File
-
-Additionally, you can select "Overwrite Existing Files"

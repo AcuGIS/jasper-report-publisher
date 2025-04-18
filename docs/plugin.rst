@@ -33,7 +33,9 @@ Go to Upload Project Directory via SFTP
 
 .. image:: sftp.png
 
-Select the Server you wish to upload to.  Also select the Remote Location (file path) to upload to (e.g. /var/www/html)
+Select the Server you wish to upload to.  
+
+Use the "Browse Remote Path" button to browse the remote directories, or simply enter the remote location (file path) to upload to (e.g. /var/www/html)
 
 If your owner is a user:group other than wwww-data, change it in the Owbership field.
 
@@ -42,7 +44,7 @@ If your owner is a user:group other than wwww-data, change it in the Owbership f
 
 Click Upload
 
-.. image:: RemoteBrowser.png
+.. image:: UploadProject.png
 
 .. note::
     If files exist, you will prompted if you wish to overwrite files.

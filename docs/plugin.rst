@@ -25,7 +25,7 @@ Begin by selecting Configure SFTP servers:
 
 Click Add to add server(s).
 
-.. image:: ConfigServers.png
+.. image:: ConfigureSFTPServers.png   
 
 Click Save.
 
@@ -44,7 +44,7 @@ If your owner is a user:group other than wwww-data, change it in the Owbership f
 
 Click Upload
 
-.. image:: UploadProject.png
+.. image:: UploadQGISProject.png  
 
 .. note::
     If files exist, you will prompted if you wish to overwrite files.

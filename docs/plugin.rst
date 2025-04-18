@@ -51,6 +51,17 @@ Click Upload
     
 A success message will be displayed up completion.
 
+Use Cases
+==================
+
+The plugin is generic and can be used for SFTP'ing a QGIS Project directory to any remote location via SFTP.
+
+Some specific use cases are:
+
+- Liamap: While it is still neccessary to create a Repository on disk and register it via Lizmap admin, once you have done so the plugin can transfer the project as well as update files as needed.
+
+- QWC2: Can be used to upload to /scan directory.  Once uploaded, Configuration Utility must still be run for the project.
+
 
 
 

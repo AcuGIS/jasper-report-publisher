@@ -42,7 +42,7 @@ If your owner is a user:group other than wwww-data, change it in the Owbership f
 
 Click Upload
 
-.. image:: Upload.png
+.. image:: RemoteBrowser.png
 
 .. note::
     If files exist, you will prompted if you wish to overwrite files.

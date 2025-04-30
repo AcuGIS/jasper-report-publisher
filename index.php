@@ -177,7 +177,7 @@ if(($user->accesslevel == 'Admin') || ($user->accesslevel == 'Devel')){
 
 					<?PHP foreach($group_rows as $row) { ?>
 						<?PHP
-								$image = file_exists("assets/maps/{$row['id']}.png") ? "assets/maps/{$row['id']}.png" : "assets/maps/default.png";
+								$image = file_exists("assets/reports/{$row['id']}.png") ? "assets/reports/{$row['id']}.png" : "assets/reports/default.png";
 
 								if(strtolower($row['download_only']) === 'yes') {
 									$url = 'download.php?type=pdf&view=yes&id='.$row['id'];
@@ -210,7 +210,7 @@ if(($user->accesslevel == 'Admin') || ($user->accesslevel == 'Devel')){
 
           <?PHP foreach($rows1 as $row) { ?>
             <?PHP
-                $image = file_exists("assets/maps/{$row['id']}.png") ? "assets/maps/{$row['id']}.png" : "assets/maps/default.png";
+                $image = file_exists("assets/r/{$row['id']}.png") ? "assets/r/{$row['id']}.png" : "assets/r/default.png";
             ?>
 
           <div class="col">

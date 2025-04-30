@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>AcuGIS | Jasper Report Publisher</title>
+  <title>GeoSync</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -23,104 +23,108 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  
+ 
+ 
 	
 	
+<style>
+.bg-image-vertical {
+position: relative;
+overflow: hidden;
+background-repeat: no-repeat;
+background-position: right center;
+background-size: auto 100%;
+}
 
+@media (min-width: 1025px) {
+    .h-custom-2 {
+        height: 65%;
+    }
+
+}
+</style>
   
 </head>
 
 <body>
 
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
 
-<!-- Login 8 - Bootstrap Brain Component -->
-<section class="bg-light p-3 p-md-4 p-xl-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-xxl-11">
-        <div class="card border-light-subtle shadow-sm">
-          <div class="row g-0">
-            <div class="col-12 col-md-6">
-              <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="assets/images/login_page.png" alt="Welcome back you've been missed!">
-            </div>
-            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-              <div class="col-12 col-lg-11 col-xl-10">
-                <div class="card-body p-3 p-md-4 p-xl-5">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="mb-5">
-                        <div class="text-center mb-4">
-                          <a href="#!">
-                            <img src="assets/images/login_box.png" alt="QuartzMap" width="125" height="125">
-                          </a>
-                        </div>
-                        <h4 class="text-center">Jasper Publisher</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="d-flex gap-3 flex-column">
-                        
-                      </div>
-                      
-                    </div>
-                  </div>
-                  <form method="post" action="admin/action/login.php">
+        <div class="px-5 ms-xl-4">
+          <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+          <span class="h1 fw-bold mb-0" style="color:#666">Jasper Report Publisher</span><br><br>
+
+
+
+          <!--<span class="h6 fw-bold mb-0" style="color:#666; position: absolute;  bottom: 8px;  right: 52%;">Jasper Report Server, Release 3.0.1.2.beta</span>-->
+
+        </div>
+
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+           <form method="post" action="admin/action/login.php">
 										<?php if(!empty($_GET['err'])){ ?>
 											<div class="alert alert-danger" role="alert" style="width: 80%"><?=$_GET['err']?></div>
 										<?php } else if(!empty($_GET['msg'])){ ?>
 											<div class="alert alert-success" role="alert" style="width: 80%"><?=$_GET['msg']?></div>
 										<?php } ?>
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" class="form-control form-control-lg" id="email"   placeholder="Enter a valid email address" name="email"/>
 
 
-            <label class="form-label" for="form3Example3">Email address</label>
-          </div>
+            <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Access</h4>
 
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-             
-            <label class="form-label" for="form3Example4">Password</label>
-          </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <!--<input type="email" id="form2Example18" class="form-control form-control-lg" />-->
+                          <input type="email" class="form-control form-control-lg" name="email" id="email" required>
 
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            
-          </div>
-
-          <div class="col-12">
-             <div class="d-grid">
-             	<button class="btn btn-dark btn-lg" type="submit" value="Submit" name="submit">Log in</button>
-             </div>
-          </div>
-        </form>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-5">
-                        <a href="https://www.acugis.com" class="link-secondary text-decoration-none">From AcuGIS</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <label class="form-label" for="form2Example18">Email address</label>
             </div>
-          </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <!--<input type="password" id="form2Example28" class="form-control form-control-lg" />-->
+	       <input type="password" class="form-control form-control-lg" name="pwd" id="pwd" value="" required>
+	
+              <label class="form-label" for="form2Example28">Password</label>
+            </div>
+
+            <div class="pt-1 mb-4">
+              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block" type="submit" value="Login" name="submit" style="width:100%!important;background-color:#666;color:#fff">Login</button>
+            </div>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<span class="h8 fw-bold mb-0" style="color:#666; font-size:12px!important">Release 3.0.1.2</span>
+
+            <!--<p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+            <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>-->
+
+          </form>
+
+
         </div>
+
       </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="background.jpg"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+      </div>
+
     </div>
+
   </div>
 </section>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>

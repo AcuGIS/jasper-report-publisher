@@ -1,6 +1,6 @@
 
 .page-wrapper {
-    background: gainsboro!important;
+    background: #fff!important;
     position: relative;
 }
 
@@ -75,7 +75,7 @@ html {
 
 .left-sidebar {
     position: absolute;
-    width: 320px;
+    width: 260px;
     height: 100%;
     top: 0px;
     border-right: 1px solid #36454F;
@@ -95,11 +95,16 @@ html {
 
 .left-sidebar {
     position: absolute;
-    width: 320px;
+    width: 260px;
     height: 100%;
     top: 0px;
-    border-right: 1px solid #36454F;
+    border-right: 0px solid #36454F;
     z-index: 10;
     padding-top: 40px;
     background: #fff;
+}
+
+
+#main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
+    margin-left: 260px!important;
 }

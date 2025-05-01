@@ -47,10 +47,122 @@
 
 <head>
 	<?php include("incl/meta.php"); ?>
+	<link href="dist/css/admin.css" rel="stylesheet">
 	<link href="dist/css/table.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 	<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
+	<style>
+		.page-wrapper {
+			flex: 1;
+			padding: var(--space-md) var(--space-lg);
+			margin-left: 250px;
+			background-color: var(--white);
+		}
+		.card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			min-width: 0;
+			word-wrap: break-word;
+			background-color: #fff;
+			border: none!important;
+			border-radius: inherit;
+			text-decoration: none!important;
+		}
+		.bg-warning {
+			background-color: #50667f!important;
+		}
+		td {
+			max-width: 100px !important;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.table-container {
+			background: white;
+			border-radius: 8px;
+			box-shadow: var(--shadow-sm);
+			overflow: hidden;
+			margin-top: 24px;
+		}
+		.custom-table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
+			margin-bottom: var(--space-lg);
+		}
+		.custom-table th {
+			background: var(--background-gray);
+			font-weight: 600;
+			text-align: left;
+			padding: 1rem;
+			border-bottom: 2px solid var(--border-color);
+		}
+		.custom-table td {
+			padding: 1rem;
+			border-bottom: 1px solid var(--border-color);
+			vertical-align: middle;
+		}
+		.custom-table tbody tr:hover {
+			background-color: var(--background-gray);
+		}
+		.action-icon {
+			color: var(--text-medium);
+			cursor: pointer;
+			padding: 0.25rem;
+			border-radius: 4px;
+			transition: all 0.2s;
+		}
+		.action-icon:hover {
+			color: var(--primary-blue);
+			background: var(--background-gray);
+		}
+		.action-icon.edit {
+			color: #3b82f6;
+		}
+		.action-icon.delete {
+			color: #ef4444;
+		}
+		.action-icon.add {
+			color: #10b981;
+		}
+		.form-control {
+			display: block;
+			width: 100%;
+			padding: 0.5rem 0.75rem;
+			font-size: 0.875rem;
+			line-height: 1.5;
+			color: var(--text-dark);
+			background-color: #fff;
+			border: 1px solid var(--border-color);
+			border-radius: 4px;
+			transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		}
+		.form-control:focus {
+			border-color: var(--primary-blue);
+			outline: 0;
+			box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+		}
+		.error {
+			border-color: #ef4444 !important;
+		}
+		.alert {
+			padding: 12px 16px;
+			border-radius: 4px;
+			margin-bottom: 20px;
+		}
+		.alert-success {
+			background-color: #d1e7dd;
+			border-color: #badbcc;
+			color: #0f5132;
+		}
+		.alert-warning {
+			background-color: #fff3cd;
+			border-color: #ffecb5;
+			color: #664d03;
+		}
+	</style>
 	<script type="text/javascript">
 	        var deleted_ids = [];
 			$(document).ready(function() {
@@ -330,132 +442,97 @@
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
        
-        <header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <div class="navbar-header" data-logobg="skin6">
-                    
-                    <a class="navbar-brand" href="index.php">
-                        <b class="logo-icon">
-                            
-                            
-                            <img src="assets/images/cited-logo.png" alt="homepage" class="dark-logo" />
-                           
-                            <img src="assets/images/cited-logo.png" alt="homepage" class="light-logo" />
-                        </b>
-                       
-                        <span class="logo-text">
-                           
-
-                        </span>
-                    </a>
-                   
-                    
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                            class="ti-menu ti-close"></i></a>
-                </div>
-                
-
-            </nav>
-        </header>
-        
-        <?php const MENU_SEL = 'reports.php'; include("incl/sidebar.php"); ?>
+        <?php define('MENU_SEL', 'reports.php');
+            include("incl/topbar.php");
+            include("incl/sidebar.php");
+        ?>
         
         <div class="page-wrapper">
-           
-            <div class="page-breadcrumb" style="padding-left:30px; padding-right: 30px; padding-top:0px; padding-bottom: 0px">
+            <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-6">
-                        <nav aria-label="breadcrumb">
-
-                          </nav>
+                        <nav aria-label="breadcrumb"></nav>
                         <h1 class="mb-0 fw-bold">Reports</h1>
                     </div>
                     <div class="col-6">
                         <div class="text-end upgrade-btn">
-
-							<button type="button" class="btn btn-primary text-white add-new">
-								<i class="fa fa-plus"></i> Add New </button><br>
-
-
+                            <button type="button" class="btn btn-primary text-white add-new">
+                                <i class="fa fa-plus"></i> Add New
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
            
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-container">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless custom-table" id="sortTable">
+                                            <thead>
+                                                <tr>
+                                                    <th data-editable="false">ID</th>
+                                                    <th data-editable="true" data-name="name">Name</th>
+                                                    <th data-editable="true" data-name="description">Description</th>
+                                                    <th data-editable="true" data-name="datasource_id" data-type="select">Data Source</th>
+                                                    <th data-editable="true" data-name="repname" data-type="select">Report Name</th>
+                                                    <th data-editable="true" data-name="is_grouped" data-type="select">Grouped</th>
+                                                    <th data-editable="true" data-name="download_only" data-type="select">Download Only</th>
+                                                    <th data-editable="true" data-name="accgrps" data-type="select">Access Groups</th>
+                                                    <th data-editable="false" data-action="true">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php while($row = pg_fetch_object($rows)): ?>
+                                                <tr data-id="<?=$row->id?>">
+                                                    <td><?=$row->id?></td>
+                                                    <td><?=$row->name?></td>
+                                                    <td><?=$row->description?></td>
+                                                    <td data-type="select" data-value="<?=$row->datasource_id?>"><?=$datasources[$row->datasource_id]['name']?></td>
+                                                    <td data-type="select" data-value="<?=$row->repname?>"><?=$row->repname?></td>
+                                                    <td data-type="select" data-value="<?=$row->is_grouped?>"><?=$yesNo[$row->is_grouped]?></td>
+                                                    <td data-type="select" data-value="<?=$row->download_only?>"><?=$row->download_only?></td>
+                                                    <td data-type="select" data-value="<?=$row->accgrps?>"><?=$row->accgrps?></td>
+                                                    <td>
+                                                        <a class="action-icon add" title="Add" data-toggle="tooltip">
+                                                            <i class="material-icons">&#xE03B;</i>
+                                                        </a>
+                                                        <a class="action-icon edit" title="Edit" data-toggle="tooltip">
+                                                            <i class="material-icons">&#xE254;</i>
+                                                        </a>
+                                                        <a class="action-icon delete" title="Delete" data-toggle="tooltip">
+                                                            <i class="material-icons">&#xE872;</i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <?php endwhile; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-				<table class="table table-bordered custom-table" id="sortTable">
-					<thead>
-						<tr>
-							<th data-name="id" data-editable='false'>ID</th>
-							<th data-name="repname" data-type="select">Report</th>
-							<th data-name="datasource_id" data-type="select">Data Souce</th>
-							<th data-name="download_only" data-type="select">Format</th>
-							<th data-name="outname">File Name</th>
-							<th data-name="name">Name</th>
-							<th data-name="description">Description</th>
-							<th data-name="accgrps" data-type="select">Access groups</th>
-							<th data-name="is_grouped" data-type="select">Grouped Report</th>
-							<th data-editable='false' data-action='true'>Actions</th>
-						</tr>
-					</thead>
-
-					<tbody> <?php
-						if($rows){
-						while($row = pg_fetch_object($rows)): ?> <tr data-id="<?=$row->id?>" align="left">
-							<td><?=$row->id?></td>
-							<td data-type="select" data-value="<?=$row->repname?>"><?= $row->repname?></td>
-							<td data-type="select" data-value="<?=$row->datasource_id?>"><?=$datasources[$row->datasource_id]['name']?></td>
-							<td data-type="select" data-value="<?=$row->download_only?>"><?=$row->download_only?></td>
-							<td><?= $row->outname?></td>
-							<td><?= $row->name?></td>
-							<td><?= $row->description?></td>
-							<?php
-								$rep_acc_grps = $rep_obj->getRepAccessGroups($row->id);
-								$rep_acc_ids  = implode(',', array_keys($rep_acc_grps));
-								$rep_acc_names = implode(',', array_values($rep_acc_grps));
-							?>
-							<td data-type="select" data-value="<?=$rep_acc_ids?>"><?=$rep_acc_names?></td>
-							<td data-type="select" data-value="<?=intval($row->is_grouped)?>"><?=$yesNo[intval($row->is_grouped)]?></td>
-
-
-							<td>
-								<a class="add" title="Add" data-toggle="tooltip">
-									<i class="material-icons">&#xE03B;</i>
-								</a>
-								<a class="edit" title="Edit" data-toggle="tooltip">
-									<i class="material-icons">&#xE254;</i>
-								</a>
-								<a class="delete" title="Delete" data-toggle="tooltip">
-									<i class="material-icons">&#xE872;</i>
-								</a>
-							</td>
-						</tr> <?php endwhile;
-						}?> </tr>
-					</tbody>
-				</table>
-
-        <div class="row">
-          <div class="col-6">
-						<p>&nbsp;</p>
-						<div id = "repThumbnail" class = "alert alert-success">
-						   <a href = "#" class = "close" data-dismiss = "alert">&times;</a>
-						   <strong>Note:</strong> You can set the thumbnail for a report by adding reportid.png to the assets/maps folder.
-						</div>
-						
-						<div id = "repThumbnail2" class = "alert alert-warning">
-						   <a href = "#" class = "close" data-dismiss = "alert">&times;</a>
-						   <strong>URL</strong> must contain protocol - http or https.
-						</div>
-					</div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success" id="repThumbnail">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Note:</strong> You can set the thumbnail for a report by adding reportid.png to the assets/maps folder.
+                        </div>
+                        
+                        <div class="alert alert-warning" id="repThumbnail2">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>URL</strong> must contain protocol - http or https.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-				<div class="col-12">
-						<div class="row">
-        		</div>
-        </div>
-                
-  </div>
             
             <footer class="footer text-center">
             </footer>

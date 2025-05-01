@@ -28,7 +28,7 @@
 
 <head>
 	<?php include("incl/meta.php"); ?>
-	<link href="dist/css/table.css" rel="stylesheet">
+	<link href="dist/css/admin.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 	<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
@@ -332,92 +332,71 @@ table td:nth-child(1)
 				?>
       
         <div class="page-wrapper">
-           
-            <div class="page-breadcrumb" style="padding-left:30px; padding-right: 30px; padding-top:0px; padding-bottom: 0px">
-                <div class="row align-items-center">
-                    <div class="col-6">
-                        <nav aria-label="breadcrumb">
-
-                          </nav>
-                        <h1 class="mb-0 fw-bold">Users</h1><p>&nbsp;</p>
-<p><strong>Note:</strong> Your FTP username is <b><?=$myuser['ftp_user']?></b>. Your FTP password is your login password.</p>
-
-                    </div>
-                    <div class="col-6">
-                        <div class="text-end upgrade-btn">
-                            
-
-<a href="registration.php" class="btn btn-info btn-md active" role="button" aria-pressed="true">Add User</a>
-
-							
-
-
-                        </div>
-                    </div>
+            <div class="page-header">
+                <div>
+                    <h1>Users</h1>
+                    <p class="info-text">Your FTP username is <b><?=$myuser['ftp_user']?></b>. Your FTP password is your login password.</p>
                 </div>
+                <a href="registration.php" class="btn-primary">
+                    <i class="mdi mdi-plus"></i>
+                    Add User
+                </a>
             </div>
-            
-            <div class="container-fluid">
 
-				<table class="table custom-table" id="sortTable">
-					<thead>
-						<tr>
-							<th data-name="id" data-editable='false'>ID</th>
-							<th data-name="name">name</th>
-							<th data-name="email" data-editable='false'>Email</th>
-							<th data-name="password">Password</th>
-							<th data-name="ftp_user" data-editable='false'>FTP User</th>
-							<th data-name="accesslevel" data-type="select">Access Level</th>
-							<th data-name="groups"      data-type="select">Access Groups</th>
-							<th data-editable='false' data-action='true'>Actions</th>
-						</tr>
-					</thead>
+            <div class="table-container">
+                <table class="table" id="sortTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>FTP User</th>
+                            <th>Access Level</th>
+                            <th>Access Groups</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($user = pg_fetch_object($users)): ?>
+                        <tr data-id="<?=$user->id?>">
+                            <td><?=$user->id?></td>
+                            <td><?=$user->name?></td>
+                            <td><?=$user->email?></td>
+                            <td>********</td>
+                            <td><?=$user->ftp_user?></td>
+                            <td data-type="select" data-value="<?=$user->accesslevel?>"><?=$user->accesslevel?></td>
+                            <?php
+                                $usr_acc_grps = $acc_obj->getByUserId($user->id);
+                                $grp_ids = implode(',',array_keys($usr_acc_grps));
+                                $grp_names = implode(',',array_values($usr_acc_grps));
+                            ?>
+                            <td data-type="select" data-value="<?=$grp_ids?>"><?=$grp_names?></td>
+                            <td>
+                                <div class="table-actions">
+                                    <a class="action-icon edit" title="Edit">
+                                        <i class="mdi mdi-pencil"></i>
+                                    </a>
+                                    <a class="action-icon delete" title="Delete">
+                                        <i class="mdi mdi-delete"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-					<tbody style="font-size: 16px;font-weight: 300;"> <?php while($user = pg_fetch_object($users)): ?> <tr data-id="<?=$user->id?>" align="left">
-							<td><?=$user->id?> </td>
-							<td><?= $user->name?></td>
-							<td><?= $user->email?></td>
-							<td><?= $user->password?></td>
-							<td><?= $user->ftp_user?></td>
-							<td data-type="select" data-value="<?=$user->accesslevel?>"><?=$user->accesslevel?></td>
-								<?php
-									$usr_acc_grps = $acc_obj->getByUserId($user->id);
-									$grp_ids = implode(',',array_keys($usr_acc_grps));
-									$grp_names = implode(',',array_values($usr_acc_grps));
-								?>
-							<td data-type="select" data-value="<?=$grp_ids?>"><?=$grp_names?></td>
-							<td>
-								<a class="add" title="Add" data-toggle="tooltip">
-									<i class="material-icons">&#xE03B;</i>
-								</a>
-								<a class="edit" title="Edit" data-toggle="tooltip">
-									<i class="material-icons">&#xE254;</i>
-								</a>
-								<a class="delete" title="Delete" data-toggle="tooltip">
-									<i class="material-icons">&#xE872;</i>
-								</a>
-							</td>
-						</tr> <?php endwhile; ?>
-					</tbody>
-				</table>
-				
-				<div class="row">
-					<!--<div class="col-6" style="width: 50%!important">
-						<div class = "alert alert-success">
-							<a href = "#" class = "close" data-dismiss = "alert">&times;</a>
-							<strong>Note:</strong> Your personal FTP login username is <b><?=$myuser['ftp_user']?></b>. For password use your login password.
-						</div>
-					</div>-->
-				</div>
-				
-      </div>
-			  
-    </div>      
-  </div>
-    <script>new DataTable('#sortTable', { paging: false });</script>
-    <!--Menu sidebar -->
+    <script>
+        new DataTable('#sortTable', { 
+            paging: false,
+            order: [[0, 'asc']]
+        });
+    </script>
     <script src="dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
     <script src="dist/js/custom.js"></script>
 </body>
 

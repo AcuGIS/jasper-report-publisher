@@ -28,10 +28,11 @@
 
 <head>
 	<?php include("incl/meta.php"); ?>
-	<link href="dist/css/table.css" rel="stylesheet">
+	<link href="dist/css/admin.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap4.min.css">
 	<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap4.min.js"></script>
+	<link href="dist/css/table.css" rel="stylesheet">
 	
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -204,6 +205,89 @@
 						});
 		</script>
 
+<style>
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    border: none!important;
+    border-radius: inherit;
+    text-decoration: none!important;
+}
+
+.bg-warning {
+    background-color: #50667f!important;
+}
+
+td {
+    max-width: 100px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    margin-top: 24px;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: var(--space-lg);
+}
+
+.custom-table th {
+    background: var(--background-gray);
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.custom-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.custom-table tbody tr:hover {
+    background-color: var(--background-gray);
+}
+
+.action-icon {
+    color: var(--text-medium);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.action-icon:hover {
+    color: var(--primary-blue);
+    background: var(--background-gray);
+}
+
+.action-icon.edit {
+    color: #3b82f6;
+}
+
+.action-icon.delete {
+    color: #ef4444;
+}
+
+.action-icon.add {
+    color: #10b981;
+}
+</style>
+
 </head>
 
 <body>
@@ -238,42 +322,44 @@
             </div>
             <div class="container-fluid">
 
-				<table class="table table-bordered custom-table" id="sortTable">
-					<thead>
-						<tr>
-							<th data-name="id" data-editable='false'>ID</th>
+				<div class="table-container">
+					<table class="table table-bordered custom-table" id="sortTable">
+						<thead>
+							<tr>
+								<th data-name="id" data-editable='false'>ID</th>
 
-							<th data-name="ptype">Paramater Type</th>
-                                                        <th data-name="pname">Paramater Name</th>
-							<th data-name="pvalues">Parameter Values</th>
-							<th data-name="reportid" data-type="select">Report Name</th>
-							<th data-editable='false' data-action='true'>Actions</th>
-						</tr>
-					</thead>
+								<th data-name="ptype">Paramater Type</th>
+								<th data-name="pname">Paramater Name</th>
+								<th data-name="pvalues">Parameter Values</th>
+								<th data-name="reportid" data-type="select">Report Name</th>
+								<th data-editable='false' data-action='true'>Actions</th>
+							</tr>
+						</thead>
 
-					<tbody> <?php while($row = pg_fetch_object($rows)): ?> <tr data-id="<?=$row->id?>" align="left">
-							<td><?=$row->id?></td>
+						<tbody> <?php while($row = pg_fetch_object($rows)): ?> <tr data-id="<?=$row->id?>" align="left">
+								<td><?=$row->id?></td>
 
-							<td><?= $row->ptype?></td>
-							<td><?= $row->pname?></td>
-							<td><?= $row->pvalues?></td>
-							<td data-type="select" data-value="<?=$row->reportid?>"><?=$users[$row->reportid]?></td>
+								<td><?= $row->ptype?></td>
+								<td><?= $row->pname?></td>
+								<td><?= $row->pvalues?></td>
+								<td data-type="select" data-value="<?=$row->reportid?>"><?=$users[$row->reportid]?></td>
 
 
-							<td>
-								<a class="add" title="Add" data-toggle="tooltip">
-									<i class="material-icons">&#xE03B;</i>
-								</a>
-								<a class="edit" title="Edit" data-toggle="tooltip">
-									<i class="material-icons">&#xE254;</i>
-								</a>
-								<a class="delete" title="Delete" data-toggle="tooltip">
-									<i class="material-icons">&#xE872;</i>
-								</a>
-							</td>
-						</tr> <?php endwhile; ?> </tr>
-					</tbody>
-				</table>
+								<td>
+									<a class="action-icon add" title="Add" data-toggle="tooltip">
+										<i class="material-icons">&#xE03B;</i>
+									</a>
+									<a class="action-icon edit" title="Edit" data-toggle="tooltip">
+										<i class="material-icons">&#xE254;</i>
+									</a>
+									<a class="action-icon delete" title="Delete" data-toggle="tooltip">
+										<i class="material-icons">&#xE872;</i>
+									</a>
+								</td>
+							</tr> <?php endwhile; ?> </tr>
+						</tbody>
+					</table>
+				</div>
 
                 <div class="row">
                     <div class="col-12">

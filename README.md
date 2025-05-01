@@ -91,7 +91,7 @@ The installer will create the required objects in PostgreSQL
 
 When the installer completes, you can log in using the email and password you selected above.
 
-![Setup](docs/_static/install-3.png)
+![Setup](docs/_static/JasperReportPublisherLogin.png)
 
 ### Note: 
 If you installed the demo reports, be sure to restart Tomcat once logged in.

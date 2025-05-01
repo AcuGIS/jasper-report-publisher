@@ -6,7 +6,7 @@
 
 ## Publish, schedule, email, and run reports on demand
 
-![Jasper Report Publisher](docs/_static/jasper-report-publisher-github.png)
+![Jasper Report Publisher](docs/_static/JasperGithubDashboard.png)
 
 ## Overview
 

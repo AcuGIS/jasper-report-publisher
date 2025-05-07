@@ -378,3 +378,5 @@ app_fixes;
 
 echo "Passwords saved in /root/auth.txt"
 cat /root/auth.txt
+
+apt-get -y clean all

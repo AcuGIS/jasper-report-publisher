@@ -47,11 +47,16 @@ if(isset($_SESSION[SESS_USR_KEY]) && in_array($_SESSION[SESS_USR_KEY]->accesslev
 	
 	$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
 	$upload_path = get_jasper_home().'/reports';
-	$dest_dir = $upload_path.'/'.$_POST['destination'];
+	$dest_dir = $upload_path.$_POST['destination'];
 
 	#check if upload dir has .. in path
 	if(preg_match('/\.\./', $dest_dir)){
-		header("Location: ../publish.php&error=Invalid destination");
+		header("Location: ../publish.php?error=Invalid destination");
+		return;
+	}else if(!is_dir($dest_dir)){
+		header("Location: ../publish.php?error=Destination not a directory");
+	}else if(!is_writeable($dest_dir)){
+		header("Location: ../publish.php?error=Destination not writeable");
 		return;
 	}
 
@@ -73,18 +78,27 @@ if(isset($_SESSION[SESS_USR_KEY]) && in_array($_SESSION[SESS_USR_KEY]->accesslev
 	}else{
 		$files[$_FILES["source"]["name"]] = $_FILES["source"]["tmp_name"];
 	}
-
+	
+	$all_moved = true;
 	foreach($files as $name => $fpath) {
-		move_uploaded_file($fpath, $dest_dir.'/'.$name);
-		chmod($dest_dir.'/'.$name, 0644);
-		exec('sudo /usr/local/bin/chown_ctl.sh '.$dest_dir.'/'.$name);
+		if(move_uploaded_file($fpath, $dest_dir.'/'.$name)){
+			chmod($dest_dir.'/'.$name, 0644);
+			exec('sudo /usr/local/bin/chown_ctl.sh '.$dest_dir.'/'.$name);
+		}else{
+			$all_moved = false;
+			break;
+		}
 	}
 
 	if(!is_null($source_dir) && is_dir($source_dir)){
 		rrmdir($source_dir);
 	}
 
-	header("Location: ../publish.php?success=Upload succeeded!");
+	if($all_moved){
+		header("Location: ../publish.php?success=Upload succeeded!");
+	}else{
+		header("Location: ../publish.php?error=Upload failed!");
+	}
 
 }else {
 	header("Location: ../index.php");

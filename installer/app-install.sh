@@ -67,7 +67,7 @@ apt-get -y install apache2 php-{pgsql,zip,gd,simplexml,curl,fpm} \
 	r-base r-base-dev r-cran-{raster,htmlwidgets,plotly,rnaturalearthdata,rjson,skimr}  \
 	texlive-latex-base texlive-latex-recommended texlive-xetex cron
 
-apt-get install --no-install-suggests --no-install-recommends texlive-latex-extra
+apt-get -y install --no-install-suggests --no-install-recommends texlive-latex-extra
 
 	
 	install_qgis_server
@@ -173,4 +173,4 @@ touch "$DATA_DIR/rmaps.crontab"
 chown www-data:www-data "$DATA_DIR/rmaps.crontab"
 
 # save 1Gb of space
-apt-get clean all
+apt-get -y clean all

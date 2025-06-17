@@ -88,9 +88,9 @@
     $pParameters = [];
 
     foreach($ids as $id) {
-        $paramrow = $database->get('parameters', 'reportid = '.$id);
-
-        if($paramrow) {
+        $paramrows = $database->getAll('parameters', 'reportid = '.$id);
+        
+        foreach($paramrows as $paramrow){
             if(!$ptype) {
                 $ptype = $paramrow['ptype'];
                 $pname = $paramrow['pname'];

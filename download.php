@@ -19,34 +19,11 @@
     $database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     $row = $database->get('jasper', $id);
-    $paramrow = $database->get('parameters', 'reportid = '.$id);
-		$drow = $database->get('datasource', 'id = '.$row['datasource_id']);
+    $drow = $database->get('datasource', 'id = '.$row['datasource_id']);
 		
 		if(!$row || !in_array(_get('type'), ['csv', 'html', 'html2', 'docx', 'jxl', 'pdf', 'pptx', 'rtf', 'xlsx'])){
 			die('Invalid Request');
 		}
-
-    if($paramrow && $paramrow['ptype'] == 'dropdown') {
-        $params = [];
-        if($paramrow) {
-            $params = explode(',', $paramrow['pvalues']);
-
-            if( !in_array(_get($paramrow['pname']),  $params) ) {
-                $_GET[$paramrow['pname']] = $params[0];
-            }
-
-        }
-    } else if($paramrow && $paramrow['ptype'] == 'query') {
-        $DB_pvalues = explode(',', $paramrow['pvalues']);
-        $pParameters = [];
-
-        foreach($DB_pvalues as $v) {
-            if($v) {
-                $pParameters[$v] =  isset($_GET[$v]) ? $_GET[$v] : '';
-            }
-        }
-    }
-
     
     header("Content-disposition: attachment; filename=\"".$row['outname']."-".date('Y-m-d-H:i:s')."."._get('type')."\"");
 

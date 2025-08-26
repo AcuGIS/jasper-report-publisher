@@ -5,7 +5,7 @@
     require('admin/class/report.php');
 		require('admin/class/user.php');
 		require('admin/class/link.php');
-		require('admin/class/access_groups.php');
+		require('admin/class/access_group.php');
 
     if(!isset($_SESSION[SESS_USR_KEY])) {
         header('Location: login.php');

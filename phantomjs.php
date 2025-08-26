@@ -4,7 +4,7 @@
 		require('admin/incl/const.php');
 		require('admin/class/database.php');
 		require('admin/class/user.php');
-		require('admin/class/access_groups.php');
+		require('admin/class/access_group.php');
 
 		const PHANTOMJS_BIN = '/usr/local/bin/phantomjs';	// Update with the path to your PhantomJS binary
 

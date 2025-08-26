@@ -2,7 +2,7 @@
     session_start(['read_and_close' => true]);
 		require('incl/const.php');
 		require('class/user.php');
-		require('class/access_groups.php');
+		require('class/access_group.php');
 		require('class/database.php');
 
     if(!isset($_SESSION[SESS_USR_KEY]) || $_SESSION[SESS_USR_KEY]->accesslevel != 'Admin') {

@@ -1,7 +1,7 @@
 <?php
     class access_group_Class
     {
-        private $table_name = 'access_groups';
+        private $table_name = 'access_group';
         private $dbconn = null;
 
         function __construct($dbconn) {
@@ -53,7 +53,7 @@
 				function getByUserId($user_id){
 						$rv = array();
 
-						$sql ="select id,name from public.access_groups WHERE id in (SELECT access_group_id from public.user_access where user_id='".intval($user_id)."')";
+						$sql ="select id,name from public.access_group WHERE id in (SELECT access_group_id from public.user_access where user_id='".intval($user_id)."')";
 						$result = pg_query($this->dbconn, $sql);
 
 						while ($row = pg_fetch_assoc($result)) {
@@ -149,7 +149,7 @@
        }
 
        function update($data=array()) {
-          $sql = "update public.access_groups set name='".$this->cleanData($data['name'])."' where id = '".intval($data['id'])."' ";
+          $sql = "update public.access_group set name='".$this->cleanData($data['name'])."' where id = '".intval($data['id'])."' ";
           $result = pg_query($this->dbconn, $sql);
           if(!$result){
               return false;

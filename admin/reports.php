@@ -7,7 +7,7 @@
 		require('class/datasource.php');
     require('class/report.php');
     require('class/user.php');
-		require('class/access_groups.php');
+		require('class/access_group.php');
 		
 		if(!isset($_SESSION[SESS_USR_KEY]) || !in_array($_SESSION[SESS_USR_KEY]->accesslevel, ADMINISTRATION_ACCESS) ){
         header('Location: ../login.php');
@@ -547,4 +547,3 @@
 </body>
 
 </html>
-

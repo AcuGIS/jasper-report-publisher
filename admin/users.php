@@ -3,7 +3,7 @@
 		require('incl/const.php');
     require('class/database.php');
     require('class/user.php');
-		require('class/access_groups.php');
+		require('class/access_group.php');
 		
 		if(!isset($_SESSION[SESS_USR_KEY]) || $_SESSION[SESS_USR_KEY]->accesslevel != 'Admin') {
         header('Location: ../login.php');

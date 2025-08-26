@@ -4,7 +4,7 @@ CREATE TYPE public.cron_period AS ENUM('custom', 'hourly', 'daily', 'weekly', 'm
 CREATE TYPE public.rep_format AS ENUM('pdf', 'html', 'html2', 'rtf', 'xls', 'jxl', 'csv', 'xlsx', 'pptx', 'docx');
 CREATE TYPE public.rmd_format AS ENUM('html', 'pdf', 'docx');
 
-CREATE TABLE public.access_groups (	id SERIAL PRIMARY KEY,
+CREATE TABLE public.access_group (	id SERIAL PRIMARY KEY,
 	name character varying(255) NOT NULL
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE public.groups ( id SERIAL PRIMARY KEY,
 
 CREATE TABLE public.group_access ( id SERIAL PRIMARY KEY,
 		report_group_id integer NOT NULL REFERENCES public.groups(id),
-    access_group_id integer NOT NULL REFERENCES public.access_groups(id),
+    access_group_id integer NOT NULL REFERENCES public.access_group(id),
 		UNIQUE(report_group_id, access_group_id)
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE public.parameters (	id SERIAL PRIMARY KEY,
 
 
 CREATE TABLE public.report_access (	id SERIAL PRIMARY KEY,
-    access_group_id integer NOT NULL	REFERENCES public.access_groups(id),
+    access_group_id integer NOT NULL	REFERENCES public.access_group(id),
     report_id integer NOT NULL				REFERENCES public.jasper(id),
 		UNIQUE(report_id, access_group_id)
 );
@@ -70,7 +70,7 @@ CREATE TABLE public.user (	id SERIAL PRIMARY KEY,
 
 CREATE TABLE public.user_access (	id SERIAL PRIMARY KEY,
     user_id integer NOT NULL					REFERENCES public.user(id),
-    access_group_id integer NOT NULL	REFERENCES public.access_groups(id),
+    access_group_id integer NOT NULL	REFERENCES public.access_group(id),
 		UNIQUE(user_id, access_group_id)
 );
 
@@ -82,7 +82,7 @@ CREATE TABLE public.links (	id SERIAL PRIMARY KEY,
 
 CREATE TABLE public.link_access (	id SERIAL PRIMARY KEY,
     link_id integer NOT NULL					REFERENCES public.links(id),
-    access_group_id integer NOT NULL	REFERENCES public.access_groups(id),
+    access_group_id integer NOT NULL	REFERENCES public.access_group(id),
 		UNIQUE(link_id, access_group_id)
 );
 
@@ -140,7 +140,7 @@ CREATE TABLE public.map_gslink ( id SERIAL PRIMARY KEY,
 
 CREATE TABLE public.map_access ( id SERIAL PRIMARY KEY,
     map_id 						integer NOT NULL REFERENCES public.map(id),
-    access_group_id 	integer NOT NULL REFERENCES public.access_groups(id),
+    access_group_id 	integer NOT NULL REFERENCES public.access_group(id),
 		UNIQUE(map_id, access_group_id)
 );
 

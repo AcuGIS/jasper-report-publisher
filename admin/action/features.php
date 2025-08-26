@@ -5,7 +5,7 @@
     require('../class/map.php');
 		require('../class/app.php');
 		require('../class/permalink.php');
-		require('../../admin/class/access_groups.php');
+		require('../../admin/class/access_group.php');
 		
     $result = ['success' => false, 'message' => 'Error while processing your request!'];
 		

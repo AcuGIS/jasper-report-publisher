@@ -3,7 +3,7 @@
 		require('incl/const.php');
     require('class/database.php');
 		require('class/user.php');
-    require('class/access_groups.php');
+    require('class/access_group.php');
 
 		$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_SCMA);
 		$dbconn = $database->getConn(); 
@@ -128,7 +128,7 @@
 
 								$.ajax({
                                     type: "POST",
-                                    url: 'action/access_groups.php',
+                                    url: 'action/access_group.php',
                                     data: data,
                                     dataType:"json",
                                     success: function(response){
@@ -189,7 +189,7 @@
 									if(confirm('Access group will be deleted ?')){
 							    	$.ajax({
                                     type: "POST",
-                                    url: 'action/access_groups.php',
+                                    url: 'action/access_group.php',
                                     data: data,
                                     dataType:"json",
                                     success: function(response){

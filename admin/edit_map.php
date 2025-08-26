@@ -6,7 +6,7 @@
 		require('class/app.php');
 		require('class/pglink.php');
 		require('class/gslink.php');
-		require('class/access_groups.php');
+		require('class/access_group.php');
 		require('class/cron.php');
 
 		if(!isset($_SESSION[SESS_USR_KEY]) || $_SESSION[SESS_USR_KEY]->accesslevel != 'Admin'){

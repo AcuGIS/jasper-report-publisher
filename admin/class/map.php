@@ -72,7 +72,7 @@
 				function getAccessGroups($id){
 						$rv = array();
 
-						$sql ="select id,name from public.access_groups WHERE id in (SELECT access_group_id from public.map_access where map_id='".intval($id)."')";
+						$sql ="select id,name from public.access_group WHERE id in (SELECT access_group_id from public.map_access where map_id='".intval($id)."')";
 						$result = pg_query($this->dbconn, $sql);
 
 						while ($row = pg_fetch_assoc($result)) {

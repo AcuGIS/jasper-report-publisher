@@ -341,7 +341,7 @@ if(isset($_POST['submit'])){
 		
 		// insert manually
 		if(!pg_insert($con, 'public.user', 					$def_user) ||
-			 !pg_insert($con, 'public.access_groups', $def_grp)  ||
+			 !pg_insert($con, 'public.access_group', $def_grp)  ||
 			 !pg_insert($con, 'public.user_access',		$def_usr_grps) 	){
 			die(pg_last_error($con));
 		}

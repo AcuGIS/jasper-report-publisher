@@ -2,7 +2,7 @@
     session_start(['read_and_close' => true]);
 		require('../incl/const.php');
     require('../class/database.php');
-    require('../class/access_groups.php');
+    require('../class/access_group.php');
 
     $result = ['success' => false, 'message' => 'Error while processing your request!'];
 

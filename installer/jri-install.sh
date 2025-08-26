@@ -255,7 +255,7 @@ function install_jri_mssql(){
   mkdir -p temp
   pushd temp
     unzip /tmp/mssql.zip
-    find "sqljdbc_${JRI_MSSQL_VER}/enu/" -type f -name "mssql-jdbc-*.jre8.jar" -exec mv {} ${CATALINA_HOME}/lib/ \;
+    find sqljdbc_* -type f -name "mssql-jdbc-*.jre8.jar" -exec mv {} ${CATALINA_HOME}/lib/ \;
   popd
   rm -r temp /tmp/mssql.zip
 

@@ -79,15 +79,6 @@ CMD_EOF
 	systemctl restart postgresql
 }
 
-
-function install_webmin(){
-  echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list
-  wget --quiet -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
-  apt-get -y update
-  apt-get -y install webmin
-	
-}
-
 touch /root/auth.txt
 export DEBIAN_FRONTEND=noninteractive
 
@@ -97,4 +88,3 @@ apt-get -y update || true
 apt-get -y install wget unzip
 
 install_postgresql;
-install_webmin;

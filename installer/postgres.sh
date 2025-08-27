@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-PG_VER='16'
+PG_VER='17'
 PG_PASS=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32);
 
 function install_postgresql(){

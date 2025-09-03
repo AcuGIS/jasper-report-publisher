@@ -45,7 +45,7 @@
 			});
 
 			// Call systemd through backend, on action click
-			$(document).on("click", ".action", function() {
+			$(document).on("click", ".action-icon", function() {
 				var obj = $(this);
 				var svc = obj.parents("tr").attr('data-id');	// data-id holds service name
 				var op = obj.prop('name');
